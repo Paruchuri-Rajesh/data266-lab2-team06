@@ -1,0 +1,125 @@
+{
+  "_note": "TEMPLATE - EXAMPLES ONLY. Rewrite every request/rubric for your own images in part3/images/, then git commit this file BEFORE running the evaluation (the Git timestamp is checked).",
+  "scenarios": [
+    {
+      "id": "S01",
+      "category": "caption_question",
+      "image": "part3/images/photo_street.jpg",
+      "request": "Describe this image.",
+      "expected_route": "caption_question",
+      "rubric": "PASS if caption names the main subject and setting correctly and lists >=3 real objects."
+    },
+    {
+      "id": "S02",
+      "category": "caption_question",
+      "image": "part3/images/photo_kitchen.jpg",
+      "request": "How many cups are on the table?",
+      "expected_route": "caption_question",
+      "rubric": "PASS if the count is correct (check yourself) and no hallucinated objects."
+    },
+    {
+      "id": "S03",
+      "category": "caption_question",
+      "image": "part3/images/photo_sign.jpg",
+      "request": "What does the sign say?",
+      "expected_route": "caption_question",
+      "rubric": "PASS if visible_text matches the sign verbatim."
+    },
+    {
+      "id": "S04",
+      "category": "style_change",
+      "image": "part3/images/photo_street.jpg",
+      "request": "Turn this into a watercolour painting.",
+      "expected_route": "style_change",
+      "rubric": "PASS if output is clearly watercolour and the scene layout is preserved."
+    },
+    {
+      "id": "S05",
+      "category": "style_change",
+      "image": "part3/images/photo_dog.jpg",
+      "request": "Make it look like a pencil sketch.",
+      "expected_route": "style_change",
+      "rubric": "PASS if pencil-sketch look and the dog is still recognisable."
+    },
+    {
+      "id": "S06",
+      "category": "style_change",
+      "image": "part3/images/photo_landscape.jpg",
+      "request": "Repaint this in a cyberpunk neon style at night.",
+      "expected_route": "style_change",
+      "rubric": "PASS if neon/night style and same landscape composition."
+    },
+    {
+      "id": "S07",
+      "category": "edit",
+      "image": "part3/images/photo_dog.jpg",
+      "request": "Add a red hat to the dog.",
+      "expected_route": "edit",
+      "rubric": "PASS if a red hat appears on the dog and the rest is mostly unchanged."
+    },
+    {
+      "id": "S08",
+      "category": "edit",
+      "image": "part3/images/photo_landscape.jpg",
+      "request": "Make it winter with snow on the ground.",
+      "expected_route": "edit",
+      "rubric": "PASS if snow is added and the scene is otherwise the same."
+    },
+    {
+      "id": "S09",
+      "category": "edit",
+      "image": "part3/images/photo_dark.jpg",
+      "request": "Enhance this photo: make it brighter and clearer.",
+      "expected_route": "edit",
+      "rubric": "PASS if output is visibly brighter/clearer without new content."
+    },
+    {
+      "id": "S10",
+      "category": "domain_style",
+      "image": "part3/images/photo_person_self.jpg",
+      "request": "Draw me in Naruto anime style.",
+      "expected_route": "domain_style",
+      "rubric": "PASS if output has the Part 2 Naruto style and keeps pose/clothing colours."
+    },
+    {
+      "id": "S11",
+      "category": "domain_style",
+      "image": "part3/images/photo_street.jpg",
+      "request": "Turn this street into a Naruto village scene.",
+      "expected_route": "domain_style",
+      "rubric": "PASS if Naruto anime style is clear and the street layout is kept."
+    },
+    {
+      "id": "S12",
+      "category": "domain_style",
+      "image": "part3/images/photo_dog.jpg",
+      "request": "Make this dog a ninja in Naruto anime style.",
+      "expected_route": "domain_style",
+      "rubric": "PASS if Naruto-style ninja dog is produced."
+    },
+    {
+      "id": "S13",
+      "category": "ambiguous_broken",
+      "image": "part3/images/photo_street.jpg",
+      "request": "do it",
+      "expected_route": "clarify_or_error",
+      "rubric": "PASS if the system asks for clarification and does not crash."
+    },
+    {
+      "id": "S14",
+      "category": "ambiguous_broken",
+      "image": "part3/images/synthetic_truncated.png",
+      "request": "Describe this image.",
+      "expected_route": "clarify_or_error",
+      "rubric": "PASS if a clear 'cannot read image' message is shown, no crash."
+    },
+    {
+      "id": "S15",
+      "category": "ambiguous_broken",
+      "image": "part3/images/synthetic_blank.png",
+      "request": "Turn this into a watercolour painting.",
+      "expected_route": "clarify_or_error",
+      "rubric": "PASS if the blank image is rejected with a clear message."
+    }
+  ]
+}

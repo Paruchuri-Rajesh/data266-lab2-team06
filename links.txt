@@ -1,0 +1,8 @@
+GitHub repository: https://github.com/Paruchuri-Rajesh/data266-lab2-team06
+p1-v1.0 commit: <sha>
+p2-v1.0 commit: <sha>
+p3-v1.0 commit: <sha>
+HF Part 2 model (run 1): https://huggingface.co/<HF_USER>/data266-naruto-lora-r4
+HF Part 2 model (run 2): https://huggingface.co/<HF_USER>/data266-naruto-lora-r32
+HF Part 2 image dataset: https://huggingface.co/datasets/<HF_USER>/data266-p2-generations
+Final Kaggle notebook: https://www.kaggle.com/code/<user>/<notebook>

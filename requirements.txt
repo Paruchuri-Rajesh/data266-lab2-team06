@@ -1,0 +1,15 @@
+# Each notebook installs its own pins in its setup cell (Colab/Kaggle T4, Python 3.10-3.12).
+# ---- Part 1 (notebooks/p1_rag.ipynb) and Part 3 (notebooks/p3_agents.ipynb) ----
+pymupdf==1.24.14
+rank_bm25==0.2.2
+chromadb==0.5.23
+sentence-transformers==3.3.1
+transformers==4.51.3
+accelerate==1.2.1
+bitsandbytes==0.45.0
+qwen-vl-utils==0.0.8
+json_repair==0.30.3
+gradio==4.44.1
+# ---- Part 2 (notebooks/p2_finetune.ipynb) - separate runtime, older transformers for diffusers 0.31 ----
+# diffusers==0.31.0  transformers>=4.44,<4.47  peft>=0.13,<0.14  datasets>=2.21,<3.2
+# torchmetrics[image]==1.4.2  lpips==0.1.4  imagehash==4.3.1
