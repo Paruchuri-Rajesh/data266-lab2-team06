@@ -673,3 +673,4 @@ pd.DataFrame({"Baseline (no critique)": tbl(metrics["without_critique"]),
 # - **Safety measures:** keyword + VLM input checks, deceptive-real-person rule, in-image text treated as data,
 #   SD safety checker on outputs, unsafe outputs withheld, revise loop capped at 2.
 # - **Red-team results:** see table above.
+!pip uninstall -y -q torchao   # Colab's torchao 0.10 breaks peft's LoRA injection; not needed here

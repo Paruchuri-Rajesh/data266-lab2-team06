@@ -69,6 +69,7 @@ print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__vers
 
 # %%
 !pip install -q --upgrade-strategy only-if-needed diffusers==0.31.0 "transformers>=4.44,<4.47" "accelerate>=0.34,<1.2" "peft>=0.13,<0.14" "datasets>=2.21,<3.2" "torchmetrics[image]==1.4.2" lpips==0.1.4 imagehash==4.3.1 "huggingface_hub>=0.25,<0.27" safetensors tensorboard
+!pip uninstall -y -q torchao   # Colab's torchao 0.10 breaks peft's LoRA injection; not needed here
 !wget -q -nc https://raw.githubusercontent.com/huggingface/diffusers/v0.31.0/examples/text_to_image/train_text_to_image_lora.py -O train_text_to_image_lora.py
 !ls -la train_text_to_image_lora.py
 
