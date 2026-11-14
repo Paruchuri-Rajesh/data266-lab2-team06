@@ -581,6 +581,10 @@ def clip_img_emb(paths, bs=32):
     for i in range(0, len(paths), bs):
         ims = [Image.open(p).convert("RGB") for p in paths[i:i + bs]]
         e = clip_model.get_image_features(**clip_proc(images=ims, return_tensors="pt").to(dev))
+        if not torch.is_tensor(e):   # newer transformers return an output object
+            e = e.pooler_output
+            if e.shape[-1] != clip_model.config.projection_dim:
+                e = clip_model.visual_projection(e)
         embs.append(torch.nn.functional.normalize(e, dim=-1).cpu())
     return torch.cat(embs)
 
