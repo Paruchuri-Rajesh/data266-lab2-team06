@@ -1,18 +1,18 @@
 {
-  "_note": "in_domain is filled automatically by p2_finetune.ipynb (Section 2.3a) from 10 test-set captions (seed 266). REPLACE the out_of_domain and compositional examples with your own prompts and COMMIT this file BEFORE training finishes (the Git timestamp is checked).",
+  "_note": "Fixed before training (git timestamp). in_domain is filled automatically by p2_finetune.ipynb (Section 2.3a) from 10 test-set captions (seed 266). out_of_domain and compositional were drafted with Claude Code (see AI_USAGE.md) and reviewed by the team.",
   "in_domain": [],
   "out_of_domain": [
-    "a red sports car parked on a city street at night",
-    "a bowl of ramen on a wooden table, studio lighting",
-    "a lighthouse on a rocky coast during a storm",
-    "an astronaut riding a bicycle on the moon",
-    "a cozy library with tall bookshelves and a fireplace"
+    "a vintage red tram crossing a bridge in the rain",
+    "a plate of sushi on a black slate board, top view",
+    "a snowy mountain cabin with smoke coming from the chimney at dawn",
+    "a golden retriever puppy sleeping in a basket of laundry",
+    "a futuristic city skyline with flying cars at sunset"
   ],
   "compositional": [
-    "two ninjas, one in red and one in blue, standing back to back",
-    "a girl with pink hair holding a white cat next to a boy with black hair",
-    "three people sitting on a bench, the middle one wearing a green jacket",
-    "a man with a yellow scarf on the left and a woman with a purple dress on the right",
-    "a small orange fox sitting on top of a large grey rock under a full moon"
+    "two ninjas, one in a red cloak and one in a blue cloak, standing back to back",
+    "a girl with pink hair holding a white cat, next to a boy with black spiky hair",
+    "a man with a yellow scarf on the left and a woman in a purple dress on the right",
+    "three people on a bench, only the middle one wearing a green jacket",
+    "a small orange fox sitting on a large grey rock under a full moon"
   ]
 }
