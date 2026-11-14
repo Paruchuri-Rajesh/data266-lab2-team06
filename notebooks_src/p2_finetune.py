@@ -26,7 +26,7 @@ print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__vers
 # (key icon in the left sidebar) — never paste it into the notebook.
 
 # %%
-import os
+import os, shutil
 REPO_URL = "https://github.com/Paruchuri-Rajesh/data266-lab2-team06.git"   # TODO: your private repo
 HF_USER  = ""     # leave empty: filled automatically from your HF_TOKEN after login
 TEAM     = "06"
@@ -37,16 +37,27 @@ if IN_COLAB and USE_DRIVE:
     from google.colab import drive
     drive.mount("/content/drive")
 
-REPO_DIR = "/content/data266-lab2-team" + TEAM if IN_COLAB else os.getcwd()
-if IN_COLAB and not os.path.isdir(REPO_DIR):
-    # Private repo: use a GitHub token stored as Colab secret GH_TOKEN
+def safe_clone(repo_url, dest):
+    """Clone a private repo with the GH_TOKEN Colab secret without ever printing the token."""
     try:
         from google.colab import userdata
-        gh = userdata.get("GH_TOKEN")
-        url = REPO_URL.replace("https://", f"https://{gh}@") if gh else REPO_URL
+        tok = userdata.get("GH_TOKEN")
     except Exception:
-        url = REPO_URL
-    subprocess.run(["git", "clone", url, REPO_DIR], check=True)
+        tok = None
+    url = repo_url.replace("https://", f"https://x-access-token:{tok}@") if tok else repo_url
+    r = subprocess.run(["git", "clone", "-q", url, dest], capture_output=True, text=True)
+    if r.returncode != 0:
+        msg = (r.stderr or r.stdout).replace(tok or "\0", "<GH_TOKEN>")
+        raise RuntimeError("git clone failed:\n" + msg +
+                           "\nCheck the GH_TOKEN secret: fine-grained token with access to this repo and Contents = Read and write.")
+    if tok:   # keep the token out of .git/config
+        subprocess.run(["git", "-C", dest, "remote", "set-url", "origin", repo_url])
+    print("cloned", repo_url, "->", dest)
+
+REPO_DIR = "/content/data266-lab2-team" + TEAM if IN_COLAB else os.getcwd()
+if IN_COLAB and not os.path.isdir(os.path.join(REPO_DIR, ".git")):
+    shutil.rmtree(REPO_DIR, ignore_errors=True)
+    safe_clone(REPO_URL, REPO_DIR)
 if os.path.basename(os.getcwd()) != "notebooks" and os.path.isdir(REPO_DIR):
     os.chdir(REPO_DIR)
 print("cwd:", os.getcwd())

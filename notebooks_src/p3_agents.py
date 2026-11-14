@@ -33,11 +33,26 @@ import os
 IN_COLAB = "google.colab" in sys.modules
 REPO_URL = "https://github.com/Paruchuri-Rajesh/data266-lab2-team06.git"   # <-- set
 REPO_DIR = "/content/data266-lab2-team06" if IN_COLAB else os.path.abspath("..")
-if IN_COLAB and not os.path.exists(REPO_DIR):
-    from google.colab import userdata
-    tok = userdata.get("GH_TOKEN")
-    url = REPO_URL.replace("https://", f"https://{tok}@") if tok else REPO_URL
-    subprocess.run(["git", "clone", url, REPO_DIR], check=True)
+def safe_clone(repo_url, dest):
+    """Clone a private repo with the GH_TOKEN Colab secret without ever printing the token."""
+    try:
+        from google.colab import userdata
+        tok = userdata.get("GH_TOKEN")
+    except Exception:
+        tok = None
+    url = repo_url.replace("https://", f"https://x-access-token:{tok}@") if tok else repo_url
+    r = subprocess.run(["git", "clone", "-q", url, dest], capture_output=True, text=True)
+    if r.returncode != 0:
+        msg = (r.stderr or r.stdout).replace(tok or "\0", "<GH_TOKEN>")
+        raise RuntimeError("git clone failed:\n" + msg +
+                           "\nCheck the GH_TOKEN secret: fine-grained token with access to this repo and Contents = Read and write.")
+    if tok:   # keep the token out of .git/config
+        subprocess.run(["git", "-C", dest, "remote", "set-url", "origin", repo_url])
+    print("cloned", repo_url, "->", dest)
+
+if IN_COLAB and not os.path.isdir(os.path.join(REPO_DIR, ".git")):
+    import shutil; shutil.rmtree(REPO_DIR, ignore_errors=True)
+    safe_clone(REPO_URL, REPO_DIR)
 os.chdir(REPO_DIR)
 print("cwd:", os.getcwd(), "| commit:",
       subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip())
