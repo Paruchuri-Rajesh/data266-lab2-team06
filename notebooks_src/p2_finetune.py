@@ -28,8 +28,8 @@ print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__vers
 # %%
 import os
 REPO_URL = "https://github.com/Paruchuri-Rajesh/data266-lab2-team06.git"   # TODO: your private repo
-HF_USER  = "<your-hf-username-or-org>"                                  # TODO
-TEAM     = "XX"                                                         # TODO: two-digit team number
+HF_USER  = ""     # leave empty: filled automatically from your HF_TOKEN after login
+TEAM     = "06"
 USE_DRIVE = True   # keep training outputs on Google Drive so a disconnect does not lose them
 
 IN_COLAB = "google.colab" in sys.modules
@@ -69,6 +69,11 @@ try:
 except Exception:
     tok = os.environ.get("HF_TOKEN")
     login(token=tok) if tok else login()   # interactive fallback
+
+from huggingface_hub import whoami
+if not HF_USER:
+    HF_USER = whoami()["name"]
+print("HF_USER =", HF_USER)
 
 import diffusers, transformers, accelerate, peft, datasets, torchmetrics
 print({"diffusers": diffusers.__version__, "transformers": transformers.__version__,

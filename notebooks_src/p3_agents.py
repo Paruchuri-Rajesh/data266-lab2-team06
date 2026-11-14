@@ -62,7 +62,8 @@ if IN_COLAB:
 # ## 1. Configuration
 
 # %%
-HF_USER = "<HF_USER>"                                    # <-- set to your HF user / team org
+from huggingface_hub import whoami
+HF_USER = whoami()["name"]                               # read from your HF_TOKEN
 FINAL_LORA = f"{HF_USER}/data266-naruto-lora-r4"         # <-- the Part 2 run you chose as final
 DOMAIN_STYLE_WORDS = "in naruto anime style"             # trigger words matching your Part 2 captions
 VLM_ID = "Qwen/Qwen2.5-VL-3B-Instruct"
