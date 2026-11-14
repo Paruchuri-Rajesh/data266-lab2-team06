@@ -1,6 +1,17 @@
 {
   "_note": "Fixed before training (git timestamp). in_domain is filled automatically by p2_finetune.ipynb (Section 2.3a) from 10 test-set captions (seed 266). out_of_domain and compositional were drafted with Claude Code (see AI_USAGE.md) and reviewed by the team.",
-  "in_domain": [],
+  "in_domain": [
+    "a man with a hoodie and a hoodie",
+    "a man with a gun in his hand",
+    "a girl with brown hair and a white shirt",
+    "a man with a blind on his face",
+    "a cat with bubbles on it's back",
+    "a cat in a blue shirt and tie",
+    "a person with long hair and a black shirt",
+    "a woman in a blue shirt with a ponytail",
+    "a woman with long hair and a man with long hair",
+    "a dog with glasses on it's face"
+  ],
   "out_of_domain": [
     "a vintage red tram crossing a bridge in the rain",
     "a plate of sushi on a black slate board, top view",

@@ -1,0 +1,112 @@
+{
+  "commit": "5df700b",
+  "gpu": "Tesla T4",
+  "seed": 266,
+  "data": {
+    "raw": 1221,
+    "corrupted_removed": 0,
+    "exact_dup_removed": 0,
+    "near_dup_removed": 0,
+    "clean": 1221,
+    "train": 1099,
+    "test": 122,
+    "caption_words_mean": 8.93,
+    "caption_words_min": 6,
+    "caption_words_max": 41,
+    "resolution": "512x512"
+  },
+  "training": [
+    {
+      "run": "run1_r4",
+      "method": "LoRA r=4",
+      "trainable_params": 797184,
+      "learning_rate": 0.0001,
+      "steps": 1500,
+      "batch_size(per_step)": 1,
+      "grad_accum": 4,
+      "effective_batch": 4,
+      "peak_gpu_mem_GiB": 4.26,
+      "train_time_min": 44.0,
+      "gpu_hours": 0.733,
+      "sessions": 3
+    },
+    {
+      "run": "run2_r32",
+      "method": "LoRA r=32",
+      "trainable_params": 6377472,
+      "learning_rate": 0.0001,
+      "steps": 1500,
+      "batch_size(per_step)": 1,
+      "grad_accum": 4,
+      "effective_batch": 4,
+      "peak_gpu_mem_GiB": 4.35,
+      "train_time_min": 57.0,
+      "gpu_hours": 0.949,
+      "sessions": 1
+    }
+  ],
+  "results": [
+    {
+      "model": "base",
+      "KID_mean(in-domain)": 0.1410743147134781,
+      "KID_std": 0.0254975482821464,
+      "CLIP_score(all 40)": 32.365090942382814,
+      "CLIP_score(in-domain)": 30.61529922485352,
+      "LPIPS_diversity": 0.7858461976051331,
+      "nsfw_flagged": 0,
+      "train_gpu_hours": 0.0,
+      "peak_gpu_mem_GiB": NaN
+    },
+    {
+      "model": "run1_r4",
+      "KID_mean(in-domain)": 0.0613326355814933,
+      "KID_std": 0.0212605576962232,
+      "CLIP_score(all 40)": 31.4055287361145,
+      "CLIP_score(in-domain)": 29.412919807434083,
+      "LPIPS_diversity": 0.7803460776805877,
+      "nsfw_flagged": 0,
+      "train_gpu_hours": 0.733,
+      "peak_gpu_mem_GiB": 4.26
+    },
+    {
+      "model": "run2_r32",
+      "KID_mean(in-domain)": 0.0404799692332744,
+      "KID_std": 0.0145843857899308,
+      "CLIP_score(all 40)": 30.64583511352539,
+      "CLIP_score(in-domain)": 28.364792346954346,
+      "LPIPS_diversity": 0.7886397451162338,
+      "nsfw_flagged": 3,
+      "train_gpu_hours": 0.949,
+      "peak_gpu_mem_GiB": 4.35
+    }
+  ],
+  "gen_seconds_per_image": {
+    "base": 5.278345835208893,
+    "run1_r4": 5.77531812787056,
+    "run2_r32": 5.77450322508812
+  },
+  "human_eval": null,
+  "memorization_top3": [
+    {
+      "gen_image": "p02_s0.png",
+      "nearest_train": "00993.png",
+      "clip_cosine": 0.9015
+    },
+    {
+      "gen_image": "p06_s0.png",
+      "nearest_train": "00189.png",
+      "clip_cosine": 0.8874
+    },
+    {
+      "gen_image": "p00_s0.png",
+      "nearest_train": "00027.png",
+      "clip_cosine": 0.8717
+    }
+  ],
+  "final_run": "run2_r32",
+  "hf_models": {
+    "run1_r4": "Rajesh-Paruchuri/data266-naruto-lora-r4",
+    "run2_r32": "Rajesh-Paruchuri/data266-naruto-lora-r32"
+  },
+  "hf_dataset": "Rajesh-Paruchuri/data266-p2-generations"
+}

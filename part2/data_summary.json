@@ -1,0 +1,13 @@
+{
+  "raw": 1221,
+  "corrupted_removed": 0,
+  "exact_dup_removed": 0,
+  "near_dup_removed": 0,
+  "clean": 1221,
+  "train": 1099,
+  "test": 122,
+  "caption_words_mean": 8.93,
+  "caption_words_min": 6,
+  "caption_words_max": 41,
+  "resolution": "512x512"
+}

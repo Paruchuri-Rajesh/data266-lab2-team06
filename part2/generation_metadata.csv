@@ -1,0 +1,121 @@
+file,model,prompt_idx,category,prompt,seed,nsfw_flag,num_inference_steps,guidance_scale,scheduler
+base/p00_s0.png,base,0,in_domain,a man with a hoodie and a hoodie,0,False,30,7.5,DPMSolverMultistep
+base/p00_s1.png,base,0,in_domain,a man with a hoodie and a hoodie,1,False,30,7.5,DPMSolverMultistep
+base/p01_s0.png,base,1,in_domain,a man with a gun in his hand,0,False,30,7.5,DPMSolverMultistep
+base/p01_s1.png,base,1,in_domain,a man with a gun in his hand,1,False,30,7.5,DPMSolverMultistep
+base/p02_s0.png,base,2,in_domain,a girl with brown hair and a white shirt,0,False,30,7.5,DPMSolverMultistep
+base/p02_s1.png,base,2,in_domain,a girl with brown hair and a white shirt,1,False,30,7.5,DPMSolverMultistep
+base/p03_s0.png,base,3,in_domain,a man with a blind on his face,0,False,30,7.5,DPMSolverMultistep
+base/p03_s1.png,base,3,in_domain,a man with a blind on his face,1,False,30,7.5,DPMSolverMultistep
+base/p04_s0.png,base,4,in_domain,a cat with bubbles on it's back,0,False,30,7.5,DPMSolverMultistep
+base/p04_s1.png,base,4,in_domain,a cat with bubbles on it's back,1,False,30,7.5,DPMSolverMultistep
+base/p05_s0.png,base,5,in_domain,a cat in a blue shirt and tie,0,False,30,7.5,DPMSolverMultistep
+base/p05_s1.png,base,5,in_domain,a cat in a blue shirt and tie,1,False,30,7.5,DPMSolverMultistep
+base/p06_s0.png,base,6,in_domain,a person with long hair and a black shirt,0,False,30,7.5,DPMSolverMultistep
+base/p06_s1.png,base,6,in_domain,a person with long hair and a black shirt,1,False,30,7.5,DPMSolverMultistep
+base/p07_s0.png,base,7,in_domain,a woman in a blue shirt with a ponytail,0,False,30,7.5,DPMSolverMultistep
+base/p07_s1.png,base,7,in_domain,a woman in a blue shirt with a ponytail,1,False,30,7.5,DPMSolverMultistep
+base/p08_s0.png,base,8,in_domain,a woman with long hair and a man with long hair,0,False,30,7.5,DPMSolverMultistep
+base/p08_s1.png,base,8,in_domain,a woman with long hair and a man with long hair,1,False,30,7.5,DPMSolverMultistep
+base/p09_s0.png,base,9,in_domain,a dog with glasses on it's face,0,False,30,7.5,DPMSolverMultistep
+base/p09_s1.png,base,9,in_domain,a dog with glasses on it's face,1,False,30,7.5,DPMSolverMultistep
+base/p10_s0.png,base,10,out_of_domain,a vintage red tram crossing a bridge in the rain,0,False,30,7.5,DPMSolverMultistep
+base/p10_s1.png,base,10,out_of_domain,a vintage red tram crossing a bridge in the rain,1,False,30,7.5,DPMSolverMultistep
+base/p11_s0.png,base,11,out_of_domain,"a plate of sushi on a black slate board, top view",0,False,30,7.5,DPMSolverMultistep
+base/p11_s1.png,base,11,out_of_domain,"a plate of sushi on a black slate board, top view",1,False,30,7.5,DPMSolverMultistep
+base/p12_s0.png,base,12,out_of_domain,a snowy mountain cabin with smoke coming from the chimney at dawn,0,False,30,7.5,DPMSolverMultistep
+base/p12_s1.png,base,12,out_of_domain,a snowy mountain cabin with smoke coming from the chimney at dawn,1,False,30,7.5,DPMSolverMultistep
+base/p13_s0.png,base,13,out_of_domain,a golden retriever puppy sleeping in a basket of laundry,0,False,30,7.5,DPMSolverMultistep
+base/p13_s1.png,base,13,out_of_domain,a golden retriever puppy sleeping in a basket of laundry,1,False,30,7.5,DPMSolverMultistep
+base/p14_s0.png,base,14,out_of_domain,a futuristic city skyline with flying cars at sunset,0,False,30,7.5,DPMSolverMultistep
+base/p14_s1.png,base,14,out_of_domain,a futuristic city skyline with flying cars at sunset,1,False,30,7.5,DPMSolverMultistep
+base/p15_s0.png,base,15,compositional,"two ninjas, one in a red cloak and one in a blue cloak, standing back to back",0,False,30,7.5,DPMSolverMultistep
+base/p15_s1.png,base,15,compositional,"two ninjas, one in a red cloak and one in a blue cloak, standing back to back",1,False,30,7.5,DPMSolverMultistep
+base/p16_s0.png,base,16,compositional,"a girl with pink hair holding a white cat, next to a boy with black spiky hair",0,False,30,7.5,DPMSolverMultistep
+base/p16_s1.png,base,16,compositional,"a girl with pink hair holding a white cat, next to a boy with black spiky hair",1,False,30,7.5,DPMSolverMultistep
+base/p17_s0.png,base,17,compositional,a man with a yellow scarf on the left and a woman in a purple dress on the right,0,False,30,7.5,DPMSolverMultistep
+base/p17_s1.png,base,17,compositional,a man with a yellow scarf on the left and a woman in a purple dress on the right,1,False,30,7.5,DPMSolverMultistep
+base/p18_s0.png,base,18,compositional,"three people on a bench, only the middle one wearing a green jacket",0,False,30,7.5,DPMSolverMultistep
+base/p18_s1.png,base,18,compositional,"three people on a bench, only the middle one wearing a green jacket",1,False,30,7.5,DPMSolverMultistep
+base/p19_s0.png,base,19,compositional,a small orange fox sitting on a large grey rock under a full moon,0,False,30,7.5,DPMSolverMultistep
+base/p19_s1.png,base,19,compositional,a small orange fox sitting on a large grey rock under a full moon,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p00_s0.png,run1_r4,0,in_domain,a man with a hoodie and a hoodie,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p00_s1.png,run1_r4,0,in_domain,a man with a hoodie and a hoodie,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p01_s0.png,run1_r4,1,in_domain,a man with a gun in his hand,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p01_s1.png,run1_r4,1,in_domain,a man with a gun in his hand,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p02_s0.png,run1_r4,2,in_domain,a girl with brown hair and a white shirt,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p02_s1.png,run1_r4,2,in_domain,a girl with brown hair and a white shirt,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p03_s0.png,run1_r4,3,in_domain,a man with a blind on his face,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p03_s1.png,run1_r4,3,in_domain,a man with a blind on his face,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p04_s0.png,run1_r4,4,in_domain,a cat with bubbles on it's back,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p04_s1.png,run1_r4,4,in_domain,a cat with bubbles on it's back,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p05_s0.png,run1_r4,5,in_domain,a cat in a blue shirt and tie,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p05_s1.png,run1_r4,5,in_domain,a cat in a blue shirt and tie,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p06_s0.png,run1_r4,6,in_domain,a person with long hair and a black shirt,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p06_s1.png,run1_r4,6,in_domain,a person with long hair and a black shirt,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p07_s0.png,run1_r4,7,in_domain,a woman in a blue shirt with a ponytail,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p07_s1.png,run1_r4,7,in_domain,a woman in a blue shirt with a ponytail,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p08_s0.png,run1_r4,8,in_domain,a woman with long hair and a man with long hair,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p08_s1.png,run1_r4,8,in_domain,a woman with long hair and a man with long hair,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p09_s0.png,run1_r4,9,in_domain,a dog with glasses on it's face,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p09_s1.png,run1_r4,9,in_domain,a dog with glasses on it's face,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p10_s0.png,run1_r4,10,out_of_domain,a vintage red tram crossing a bridge in the rain,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p10_s1.png,run1_r4,10,out_of_domain,a vintage red tram crossing a bridge in the rain,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p11_s0.png,run1_r4,11,out_of_domain,"a plate of sushi on a black slate board, top view",0,False,30,7.5,DPMSolverMultistep
+run1_r4/p11_s1.png,run1_r4,11,out_of_domain,"a plate of sushi on a black slate board, top view",1,False,30,7.5,DPMSolverMultistep
+run1_r4/p12_s0.png,run1_r4,12,out_of_domain,a snowy mountain cabin with smoke coming from the chimney at dawn,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p12_s1.png,run1_r4,12,out_of_domain,a snowy mountain cabin with smoke coming from the chimney at dawn,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p13_s0.png,run1_r4,13,out_of_domain,a golden retriever puppy sleeping in a basket of laundry,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p13_s1.png,run1_r4,13,out_of_domain,a golden retriever puppy sleeping in a basket of laundry,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p14_s0.png,run1_r4,14,out_of_domain,a futuristic city skyline with flying cars at sunset,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p14_s1.png,run1_r4,14,out_of_domain,a futuristic city skyline with flying cars at sunset,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p15_s0.png,run1_r4,15,compositional,"two ninjas, one in a red cloak and one in a blue cloak, standing back to back",0,False,30,7.5,DPMSolverMultistep
+run1_r4/p15_s1.png,run1_r4,15,compositional,"two ninjas, one in a red cloak and one in a blue cloak, standing back to back",1,False,30,7.5,DPMSolverMultistep
+run1_r4/p16_s0.png,run1_r4,16,compositional,"a girl with pink hair holding a white cat, next to a boy with black spiky hair",0,False,30,7.5,DPMSolverMultistep
+run1_r4/p16_s1.png,run1_r4,16,compositional,"a girl with pink hair holding a white cat, next to a boy with black spiky hair",1,False,30,7.5,DPMSolverMultistep
+run1_r4/p17_s0.png,run1_r4,17,compositional,a man with a yellow scarf on the left and a woman in a purple dress on the right,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p17_s1.png,run1_r4,17,compositional,a man with a yellow scarf on the left and a woman in a purple dress on the right,1,False,30,7.5,DPMSolverMultistep
+run1_r4/p18_s0.png,run1_r4,18,compositional,"three people on a bench, only the middle one wearing a green jacket",0,False,30,7.5,DPMSolverMultistep
+run1_r4/p18_s1.png,run1_r4,18,compositional,"three people on a bench, only the middle one wearing a green jacket",1,False,30,7.5,DPMSolverMultistep
+run1_r4/p19_s0.png,run1_r4,19,compositional,a small orange fox sitting on a large grey rock under a full moon,0,False,30,7.5,DPMSolverMultistep
+run1_r4/p19_s1.png,run1_r4,19,compositional,a small orange fox sitting on a large grey rock under a full moon,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p00_s0.png,run2_r32,0,in_domain,a man with a hoodie and a hoodie,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p00_s1.png,run2_r32,0,in_domain,a man with a hoodie and a hoodie,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p01_s0.png,run2_r32,1,in_domain,a man with a gun in his hand,0,True,30,7.5,DPMSolverMultistep
+run2_r32/p01_s1.png,run2_r32,1,in_domain,a man with a gun in his hand,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p02_s0.png,run2_r32,2,in_domain,a girl with brown hair and a white shirt,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p02_s1.png,run2_r32,2,in_domain,a girl with brown hair and a white shirt,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p03_s0.png,run2_r32,3,in_domain,a man with a blind on his face,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p03_s1.png,run2_r32,3,in_domain,a man with a blind on his face,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p04_s0.png,run2_r32,4,in_domain,a cat with bubbles on it's back,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p04_s1.png,run2_r32,4,in_domain,a cat with bubbles on it's back,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p05_s0.png,run2_r32,5,in_domain,a cat in a blue shirt and tie,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p05_s1.png,run2_r32,5,in_domain,a cat in a blue shirt and tie,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p06_s0.png,run2_r32,6,in_domain,a person with long hair and a black shirt,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p06_s1.png,run2_r32,6,in_domain,a person with long hair and a black shirt,1,True,30,7.5,DPMSolverMultistep
+run2_r32/p07_s0.png,run2_r32,7,in_domain,a woman in a blue shirt with a ponytail,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p07_s1.png,run2_r32,7,in_domain,a woman in a blue shirt with a ponytail,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p08_s0.png,run2_r32,8,in_domain,a woman with long hair and a man with long hair,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p08_s1.png,run2_r32,8,in_domain,a woman with long hair and a man with long hair,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p09_s0.png,run2_r32,9,in_domain,a dog with glasses on it's face,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p09_s1.png,run2_r32,9,in_domain,a dog with glasses on it's face,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p10_s0.png,run2_r32,10,out_of_domain,a vintage red tram crossing a bridge in the rain,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p10_s1.png,run2_r32,10,out_of_domain,a vintage red tram crossing a bridge in the rain,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p11_s0.png,run2_r32,11,out_of_domain,"a plate of sushi on a black slate board, top view",0,False,30,7.5,DPMSolverMultistep
+run2_r32/p11_s1.png,run2_r32,11,out_of_domain,"a plate of sushi on a black slate board, top view",1,False,30,7.5,DPMSolverMultistep
+run2_r32/p12_s0.png,run2_r32,12,out_of_domain,a snowy mountain cabin with smoke coming from the chimney at dawn,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p12_s1.png,run2_r32,12,out_of_domain,a snowy mountain cabin with smoke coming from the chimney at dawn,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p13_s0.png,run2_r32,13,out_of_domain,a golden retriever puppy sleeping in a basket of laundry,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p13_s1.png,run2_r32,13,out_of_domain,a golden retriever puppy sleeping in a basket of laundry,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p14_s0.png,run2_r32,14,out_of_domain,a futuristic city skyline with flying cars at sunset,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p14_s1.png,run2_r32,14,out_of_domain,a futuristic city skyline with flying cars at sunset,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p15_s0.png,run2_r32,15,compositional,"two ninjas, one in a red cloak and one in a blue cloak, standing back to back",0,False,30,7.5,DPMSolverMultistep
+run2_r32/p15_s1.png,run2_r32,15,compositional,"two ninjas, one in a red cloak and one in a blue cloak, standing back to back",1,True,30,7.5,DPMSolverMultistep
+run2_r32/p16_s0.png,run2_r32,16,compositional,"a girl with pink hair holding a white cat, next to a boy with black spiky hair",0,False,30,7.5,DPMSolverMultistep
+run2_r32/p16_s1.png,run2_r32,16,compositional,"a girl with pink hair holding a white cat, next to a boy with black spiky hair",1,False,30,7.5,DPMSolverMultistep
+run2_r32/p17_s0.png,run2_r32,17,compositional,a man with a yellow scarf on the left and a woman in a purple dress on the right,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p17_s1.png,run2_r32,17,compositional,a man with a yellow scarf on the left and a woman in a purple dress on the right,1,False,30,7.5,DPMSolverMultistep
+run2_r32/p18_s0.png,run2_r32,18,compositional,"three people on a bench, only the middle one wearing a green jacket",0,False,30,7.5,DPMSolverMultistep
+run2_r32/p18_s1.png,run2_r32,18,compositional,"three people on a bench, only the middle one wearing a green jacket",1,False,30,7.5,DPMSolverMultistep
+run2_r32/p19_s0.png,run2_r32,19,compositional,a small orange fox sitting on a large grey rock under a full moon,0,False,30,7.5,DPMSolverMultistep
+run2_r32/p19_s1.png,run2_r32,19,compositional,a small orange fox sitting on a large grey rock under a full moon,1,False,30,7.5,DPMSolverMultistep
