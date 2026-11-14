@@ -68,7 +68,7 @@ print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__vers
        "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu", "seed": SEED})
 
 # %%
-!pip install -q diffusers==0.31.0 "transformers>=4.44,<4.47" "accelerate>=0.34,<1.2" "peft>=0.13,<0.14" "datasets>=2.21,<3.2" "torchmetrics[image]==1.4.2" lpips==0.1.4 imagehash==4.3.1 "huggingface_hub>=0.25,<0.27" safetensors tensorboard
+!pip install -q --upgrade-strategy only-if-needed diffusers==0.31.0 "transformers>=4.44,<4.47" "accelerate>=0.34,<1.2" "peft>=0.13,<0.14" "datasets>=2.21,<3.2" "torchmetrics[image]==1.4.2" lpips==0.1.4 imagehash==4.3.1 "huggingface_hub>=0.25,<0.27" safetensors tensorboard
 !wget -q -nc https://raw.githubusercontent.com/huggingface/diffusers/v0.31.0/examples/text_to_image/train_text_to_image_lora.py -O train_text_to_image_lora.py
 !ls -la train_text_to_image_lora.py
 
@@ -280,8 +280,12 @@ def train_run(name, rank):
     if (out_dir / "pytorch_lora_weights.safetensors").exists():
         print(f"[{name}] already finished — skipping"); return timing
     c = TRAIN_CFG
+    script = Path(REPO_DIR) / "train_text_to_image_lora.py"
+    if not script.exists():   # re-download after a runtime reset
+        subprocess.run(["wget", "-q", "-O", str(script),
+                        "https://raw.githubusercontent.com/huggingface/diffusers/v0.31.0/examples/text_to_image/train_text_to_image_lora.py"], check=True)
     cmd = ["accelerate", "launch", "--num_processes", "1", "--num_machines", "1", "--mixed_precision", c["mixed_precision"],
-           "--dynamo_backend", "no", "train_text_to_image_lora.py",
+           "--dynamo_backend", "no", str(script),
            "--pretrained_model_name_or_path", BASE_MODEL,
            "--train_data_dir", str(DATA_DIR / "train"), "--caption_column", "text", "--image_column", "image",
            "--resolution", str(c["resolution"]), "--center_crop", "--random_flip",
