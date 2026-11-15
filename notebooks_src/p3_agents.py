@@ -20,6 +20,21 @@ import subprocess, sys, random, numpy as np, torch
 SEED = 266; random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
 commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True,
                         text=True).stdout.strip()
+if not commit:   # Colab / Kaggle open the notebook without a git checkout -> ask GitHub for the HEAD of main
+    import json as _json, urllib.request as _ur
+    _tok = None
+    for _get in (lambda: __import__("google.colab.userdata", fromlist=["get"]).get("GH_TOKEN"),
+                 lambda: __import__("kaggle_secrets").UserSecretsClient().get_secret("GH_TOKEN")):
+        try:
+            _tok = _get(); break
+        except Exception:
+            pass
+    try:
+        _req = _ur.Request("https://api.github.com/repos/Paruchuri-Rajesh/data266-lab2-team06/commits/main",
+                           headers={"Authorization": f"Bearer {_tok}"} if _tok else {})
+        commit = _json.load(_ur.urlopen(_req, timeout=10))["sha"][:7] + " (main)"
+    except Exception:
+        commit = "no git checkout"
 print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__version__,
        "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu", "seed": SEED})
 
