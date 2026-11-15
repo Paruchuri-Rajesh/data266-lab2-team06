@@ -6,7 +6,11 @@
 
 Part 2: the 10 out-of-domain and compositional prompts in `part2/prompts.json` were drafted with Claude Code and reviewed by the team (the 10 in-domain prompts come from test-set captions).
 
-Not AI-generated: the golden set (Part 1), the scenarios and red-team cases (Part 3), all human evaluations, and the report text.
+Part 2: the interpretation text in the notebook markdown cells (dataset limitations, failure modes, final-run choice, license,
+memorization) and the "Limitations" section of the Hugging Face model card were drafted with Claude Code from our own
+results, grids and figures, then reviewed and edited by the team.
+
+Not AI-generated: the golden set (Part 1), the scenarios and red-team cases (Part 3), all human evaluations (ratings), and the report text.
 
 # Hosted models / APIs used (none are paid APIs; all open weights run on one T4)
 - Part 1: Qwen/Qwen2.5-VL-7B-Instruct (4-bit nf4), BAAI/bge-small-en-v1.5, BAAI/bge-reranker-base (bonus)
