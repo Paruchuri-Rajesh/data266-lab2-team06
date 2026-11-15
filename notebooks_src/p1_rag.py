@@ -34,14 +34,14 @@ print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__vers
 
 # %%
 import os, glob, shutil
-IN_KAGGLE = os.path.exists("/kaggle/input")
 IN_COLAB = "google.colab" in sys.modules
+IN_KAGGLE = bool(os.environ.get("KAGGLE_KERNEL_RUN_TYPE")) and not IN_COLAB   # Colab also has /kaggle/input now
 print("Kaggle:", IN_KAGGLE, "| Colab:", IN_COLAB)
 
 # %%
 # Pinned installs (Kaggle needs "Internet on" in notebook settings)
-!pip -q install "pymupdf==1.24.14" "rank_bm25==0.2.2" "chromadb==0.5.23" "sentence-transformers==3.3.1" \
-    "transformers==4.51.3" "accelerate==1.2.1" "bitsandbytes==0.45.0" "qwen-vl-utils==0.0.8" "json_repair==0.30.3"
+!pip -q install "pymupdf==1.24.14" "rank_bm25==0.2.2" "chromadb==1.0.21" "sentence-transformers==3.3.1" \
+    "transformers==4.51.3" "accelerate==1.2.1" "bitsandbytes==0.50.2" "qwen-vl-utils==0.0.8" "json_repair==0.30.3"
 
 # %%
 # ---------------- Configuration ----------------
@@ -441,11 +441,11 @@ for i, it in enumerate(ITEMS):
 UID = {it["uid"]: it for it in ITEMS}
 
 client = chromadb.EphemeralClient()
-col = client.get_or_create_collection("kb", metadata={"hnsw:space": "cosine"})
+col = client.get_or_create_collection("kb_p1", metadata={"hnsw:space": "cosine"})
 embs = embedder.encode([f"{it['doc_id']} {it['figure_id']} {it['text']}" for it in ITEMS],
                        normalize_embeddings=True, batch_size=32, show_progress_bar=False)
 col.add(ids=[it["uid"] for it in ITEMS], embeddings=embs.tolist(), documents=[it["text"] for it in ITEMS],
-        metadatas=[{k: it[k] for k in ("doc_id", "page", "figure_id", "trust_level", "usable", "kind", "section")}
+        metadatas=[{k: ("" if it[k] is None else it[k]) for k in ("doc_id", "page", "figure_id", "trust_level", "usable", "kind", "section")}
                    for it in ITEMS])
 
 def tok(s):

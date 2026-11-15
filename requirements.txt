@@ -2,11 +2,11 @@
 # ---- Part 1 (notebooks/p1_rag.ipynb) and Part 3 (notebooks/p3_agents.ipynb) ----
 pymupdf==1.24.14
 rank_bm25==0.2.2
-chromadb==0.5.23
+chromadb==1.0.21
 sentence-transformers==3.3.1
 transformers==4.51.3
 accelerate==1.2.1
-bitsandbytes==0.45.0
+bitsandbytes==0.50.2
 qwen-vl-utils==0.0.8
 json_repair==0.30.3
 gradio==4.44.1
