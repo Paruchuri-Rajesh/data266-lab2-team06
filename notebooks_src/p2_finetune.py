@@ -506,12 +506,46 @@ open(HE / "index.html", "w").write("\n".join(html + ["</body></html>"]))
 pd.DataFrame(key_rows).to_csv(OUT / "human_eval_key.csv", index=False)       # keep away from raters
 pd.DataFrame([{"rater": r, "pair_id": k, "style_choice": "", "prompt_choice": ""}
               for r in ("member1", "member2", "outside_rater") for k in range(1, 26)]).to_csv(OUT / "human_ratings_template.csv", index=False)
-print("Rater package:", HE, "| zip it and share index.html + img/ with raters")
+
+# Clickable rating page: each rater enters a name, picks L/R twice per pair and downloads their own CSV
+import html as _h
+rows = []
+for k, (pi, s) in enumerate(chosen, 1):
+    radios = "".join(
+        f"<p><b>{lab}:</b> " + " ".join(f"<label><input type=radio name='{q}{k}' value='{v}'> {v}</label>" for v in "LR") + "</p>"
+        for q, lab in (("s", "(a) Naruto style"), ("p", "(b) Matches prompt")))
+    rows.append(f"<div class=pair><h3>Pair {k}: {_h.escape(PROMPT_LIST[pi][1])}</h3>"
+                f"<div><figure><img src='img/pair{k:02d}_L.png'><figcaption>L</figcaption></figure>"
+                f"<figure><img src='img/pair{k:02d}_R.png'><figcaption>R</figcaption></figure></div>{radios}</div>")
+page = f"""<!doctype html><html><head><meta charset=utf-8><title>DATA 266 P2 rating</title><style>
+body{{font-family:sans-serif;max-width:860px;margin:auto;padding:16px}} figure{{display:inline-block;margin:4px;text-align:center}}
+img{{width:384px;max-width:100%}} .pair{{border-bottom:1px solid #ccc;padding:8px 0}} button{{font-size:18px;padding:8px 16px}}
+</style></head><body><h2>DATA 266 P2: blinded comparison (25 pairs)</h2>
+<p>For each pair choose L or R for (a) which looks more like the Naruto anime style and (b) which better matches the prompt.
+Rate on your own and don't discuss with other raters.</p>
+<p>Your name: <input id=rater placeholder="e.g. member1 / member2 / outside_rater"></p>
+{''.join(rows)}
+<p><button onclick="dl()">Download my ratings CSV</button> <span id=msg></span></p>
+<script>
+function dl(){{const r=document.getElementById('rater').value.trim(); if(!r){{alert('Enter your name first');return;}}
+ let out='rater,pair_id,style_choice,prompt_choice\\n', miss=[];
+ for(let k=1;k<=25;k++){{const s=document.querySelector(`input[name=s${{k}}]:checked`), p=document.querySelector(`input[name=p${{k}}]:checked`);
+  if(!s||!p) miss.push(k); out+=`${{r}},${{k}},${{s?s.value:''}},${{p?p.value:''}}\\n`;}}
+ if(miss.length){{alert('Missing answers for pairs: '+miss.join(', '));return;}}
+ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([out],{{type:'text/csv'}}));
+ a.download=`ratings_${{r}}.csv`; a.click(); document.getElementById('msg').textContent='Saved ratings_'+r+'.csv - send it back';}}
+</script></body></html>"""
+open(HE / "index.html", "w").write(page)
+print("Rater package:", HE, "| share human_eval_package.zip with raters (NOT human_eval_key.csv)")
 shutil.make_archive(str(WORK / "human_eval_package"), "zip", HE)
 
 # %%
 # Win rate of the final run vs the base model (only runs once the real ratings file exists)
 ratings_f = OUT / "human_ratings.csv"
+raw = sorted((OUT / "ratings_raw").glob("ratings_*.csv"))     # one CSV per rater, downloaded from index.html
+if raw:
+    pd.concat([pd.read_csv(f) for f in raw]).to_csv(ratings_f, index=False)
+    print("merged", [f.name for f in raw], "->", ratings_f)
 human = None
 if not ratings_f.exists():
     print("part2/human_ratings.csv not found yet — collect ratings from >=3 raters (copy human_ratings_template.csv), "
