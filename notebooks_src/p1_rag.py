@@ -38,6 +38,25 @@ IN_COLAB = "google.colab" in sys.modules
 IN_KAGGLE = bool(os.environ.get("KAGGLE_KERNEL_RUN_TYPE")) and not IN_COLAB   # Colab also has /kaggle/input now
 print("Kaggle:", IN_KAGGLE, "| Colab:", IN_COLAB)
 
+# Colab only: clone the team repo (needs the GH_TOKEN secret) so the golden set is found and results can be committed.
+REPO_URL = "https://github.com/Paruchuri-Rajesh/data266-lab2-team06.git"
+if IN_COLAB:
+    REPO_DIR = "/content/data266-lab2-team06"
+    if not os.path.isdir(os.path.join(REPO_DIR, ".git")):
+        from google.colab import userdata
+        try:
+            _tok = userdata.get("GH_TOKEN")
+        except Exception:
+            _tok = None
+        _url = REPO_URL.replace("https://", f"https://x-access-token:{_tok}@") if _tok else REPO_URL
+        _r = subprocess.run(["git", "clone", "-q", _url, REPO_DIR], capture_output=True, text=True)
+        if _r.returncode != 0:
+            raise RuntimeError("git clone failed (check the GH_TOKEN secret):\n" + (_r.stderr or "").replace(_tok or "\0", "<GH_TOKEN>"))
+        subprocess.run(["git", "-C", REPO_DIR, "remote", "set-url", "origin", REPO_URL])   # keep the token out of .git/config
+    os.chdir(REPO_DIR)
+    commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    print("cwd:", os.getcwd(), "| commit:", commit)
+
 # %%
 # Pinned installs (Kaggle needs "Internet on" in notebook settings)
 !pip -q install "pymupdf==1.24.14" "rank_bm25==0.2.2" "chromadb==1.0.21" "sentence-transformers==3.3.1" \
@@ -338,6 +357,7 @@ for doc_id, info in DOCS.items():
 # %%
 # Mark untrusted items and sanitise everything
 for item in ALL_CHUNKS + ALL_FIGS:
+    item.setdefault("trust_level", DOCS[item["doc_id"]]["trust"])   # document-level trust from the manifest
     item["untrusted_section"] = ((item["doc_id"], item["section"]) in UNTRUSTED_SECTIONS
                                  or (item["doc_id"], item["page"]) in UNTRUSTED_PAGES)
     if item["untrusted_section"]:
@@ -695,7 +715,8 @@ if val:
 
 # %%
 GOLDEN_PATH = next((p for p in ["part1/golden_set.csv", "../part1/golden_set.csv"] if os.path.exists(p)), None)
-RUN_GOLDEN_EVAL = GOLDEN_PATH is not None and os.environ.get("QUESTIONS_PATH") is None
+RUN_GOLDEN_EVAL = (GOLDEN_PATH is not None and os.environ.get("QUESTIONS_PATH") is None
+                   and len(pd.read_csv(GOLDEN_PATH, dtype=str)) > 0)   # skipped until the team has written the golden set
 print("Golden set:", GOLDEN_PATH, "| run eval:", RUN_GOLDEN_EVAL)
 
 NUM_RE = re.compile(r"-?\d[\d,]*\.?\d*")
