@@ -1,5 +1,5 @@
 {
-  "commit": "5df700b",
+  "commit": "b69809b",
   "gpu": "Tesla T4",
   "seed": 266,
   "data": {
@@ -50,8 +50,8 @@
       "model": "base",
       "KID_mean(in-domain)": 0.1410743147134781,
       "KID_std": 0.0254975482821464,
-      "CLIP_score(all 40)": 32.365090942382814,
-      "CLIP_score(in-domain)": 30.61529922485352,
+      "CLIP_score(all 40)": 32.3653920173645,
+      "CLIP_score(in-domain)": 30.616818714141846,
       "LPIPS_diversity": 0.7858461976051331,
       "nsfw_flagged": 0,
       "train_gpu_hours": 0.0,
@@ -61,8 +61,8 @@
       "model": "run1_r4",
       "KID_mean(in-domain)": 0.0613326355814933,
       "KID_std": 0.0212605576962232,
-      "CLIP_score(all 40)": 31.4055287361145,
-      "CLIP_score(in-domain)": 29.412919807434083,
+      "CLIP_score(all 40)": 31.409225082397462,
+      "CLIP_score(in-domain)": 29.41550416946411,
       "LPIPS_diversity": 0.7803460776805877,
       "nsfw_flagged": 0,
       "train_gpu_hours": 0.733,
@@ -72,8 +72,8 @@
       "model": "run2_r32",
       "KID_mean(in-domain)": 0.0404799692332744,
       "KID_std": 0.0145843857899308,
-      "CLIP_score(all 40)": 30.64583511352539,
-      "CLIP_score(in-domain)": 28.364792346954346,
+      "CLIP_score(all 40)": 30.64401836395264,
+      "CLIP_score(in-domain)": 28.366691684722905,
       "LPIPS_diversity": 0.7886397451162338,
       "nsfw_flagged": 3,
       "train_gpu_hours": 0.949,
@@ -81,26 +81,26 @@
     }
   ],
   "gen_seconds_per_image": {
-    "base": 5.278345835208893,
-    "run1_r4": 5.77531812787056,
-    "run2_r32": 5.77450322508812
+    "base": 5.620833027362823,
+    "run1_r4": 6.151107984781265,
+    "run2_r32": 6.1510291516780855
   },
   "human_eval": null,
   "memorization_top3": [
     {
       "gen_image": "p02_s0.png",
       "nearest_train": "00993.png",
-      "clip_cosine": 0.9015
+      "clip_cosine": 0.9013
     },
     {
       "gen_image": "p06_s0.png",
       "nearest_train": "00189.png",
-      "clip_cosine": 0.8874
+      "clip_cosine": 0.8873
     },
     {
       "gen_image": "p00_s0.png",
       "nearest_train": "00027.png",
-      "clip_cosine": 0.8717
+      "clip_cosine": 0.8718
     }
   ],
   "final_run": "run2_r32",
