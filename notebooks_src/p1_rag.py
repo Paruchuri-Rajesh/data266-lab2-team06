@@ -33,7 +33,7 @@ print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__vers
 # Nothing in this notebook refers to specific question IDs or question text.
 
 # %%
-import os, glob, shutil
+import os, re, glob, shutil
 IN_COLAB = "google.colab" in sys.modules
 IN_KAGGLE = bool(os.environ.get("KAGGLE_KERNEL_RUN_TYPE")) and not IN_COLAB   # Colab also has /kaggle/input now
 print("Kaggle:", IN_KAGGLE, "| Colab:", IN_COLAB)
