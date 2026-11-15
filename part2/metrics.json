@@ -85,7 +85,12 @@
     "run1_r4": 6.151107984781265,
     "run2_r32": 6.1510291516780855
   },
-  "human_eval": null,
+  "human_eval": {
+    "raters": 3,
+    "judgements": 75,
+    "win_rate_style": 0.5466666666666666,
+    "win_rate_prompt": 0.52
+  },
   "memorization_top3": [
     {
       "gen_image": "p02_s0.png",
