@@ -1,0 +1,41 @@
+id,conversation_id,question_id,answer,figure_references,citations,status
+1,C001,Q001,"The global economic crisis around 2008 was sparked by a combination of factors including a decrease in housing prices, a collapse in stock prices, and concerns about the potential for another Great Depression.",NONE,DOC1:p2,answered
+2,C002,Q002,"We should worry about rising unemployment rates because it indicates inefficiencies in resource utilization, potentially leading to labor shortages and overheating of the economy.",Figure 2-3,"DOC1:p24,DOC1:p12",answered
+3,C003,Q003,"Economists measure economic growth using real GDP, which is constructed as the sum of the quantities of final goods times constant (rather than current) prices.",NONE,DOC1:p19,answered
+4,C004,Q004,"World output grew by 2.8% in 2011 and 2.4% in 2012, below the forecasts of 3.0% and 3.2%. The shortfall was largest in the Euro area, where output contracted in both 2012 and 2013.",NONE,DOC2:p1,answered
+5,C005,Q005,"The U.S. unemployment rate increased significantly after the 2008 crisis. It reached a peak of nearly 10% in 2010, the highest rate since the 1980s.",NONE,"DOC1:p24,DOC3:p5",answered
+6,C006,Q006,"Before the crisis, China's economy grew at an average rate of 10.5% annually from 2000 to 2007. During the crisis, the growth rate dropped to 9.2% in 2008.",NONE,"DOC1:p11,DOC3:p1",answered
+7,C007,Q007,The 2008 crisis tanked stock markets everywhere.,NONE,"DOC1:p2,DOC3:p1",answered
+8,C008,Q008,"No, fast economic growth does not always mean fewer people out of work in the U.S.",NONE,"DOC1:p24,DOC3:p5",answered
+9,C009,Q009,"No, consumer prices and overall economic prices are not always in sync in the U.S.",Figure 2-4,"DOC1:p27,DOC1:p26",answered
+10,C010,Q010,"Europe has struggled with jobs due to labor market rigidities, which deter firms from hiring and increase unemployment. Before the crisis, the unemployment rate was already high at 8.5% for the Euro area over the period 2000–2007. After the crisis, the unemployment rate increased significantly, reaching 9.9% in 2011 and 2012.",NONE,"DOC1:p12,DOC1:p3",answered
+11,C011,Q011,China's growth slowed markedly in 2012 according to DOC2.,NONE,"DOC2:p1,DOC3:p1",conflict
+12,C012,Q012,Mortgage-backed securities played a significant role in the financial crisis. They contributed to the rapid transmission of the crisis from the United States to the rest of the world due to their widespread use in the financial system.,NONE,"DOC1:p2,DOC3:p1",answered
+13,C013,Q013,People sharply cut their consumption.,NONE,DOC1:p2,answered
+14,C014,Q014,A recession is defined as a period when the economy experiences two or more consecutive quarters of negative GDP growth.,NONE,DOC1:p22,answered
+15,C015,Q015,Emerging economies grew faster before the crisis.,NONE,"DOC1:p3,DOC1:p2",answered
+16,C016,Q016,9.9%,Figure A-2,"DOC2:Figure A-2,DOC2:p4",answered
+17,C017,Q017,11.4%,Figure A-3,"DOC2:Figure A-3,DOC2:p4",answered
+18,C018,Q018,0.45,Figure A-4,"DOC2:Figure A-4,DOC2:p5",answered
+19,C019,Q019,1.57,Figure A-5,"DOC2:Figure A-5,DOC2:p5",answered
+20,C020,Q020,Germany and Austria have the same unemployment rate in both Figures A-6 and A-7.,"Figure A-6,Figure A-7","DOC2:p6,DOC2:p4",answered
+21,C021,Q021,4.1%,Figure B-5,"DOC3:Figure B-5,DOC3:p5,DOC1:p11",answered
+22,C022,Q022,-0.4,Figure B-4,"DOC3:Figure B-4,DOC3:p4,DOC1:p27",conflict
+23,C023,Q023,-1.3%,Figure A-1,DOC2:p2,answered
+24,C024,Q024,"Using Okun's law as stated in Document 1, a 2% increase in output growth would lead to a predicted decrease in the unemployment rate. For the U.S., the actual change in the unemployment rate in 2012 was a decrease of 1 percentage point.",Figure B-1,"DOC1:p28,DOC3:p2",answered
+25,C025,Q025,The U.S. unemployment rate in 2010 was 9.8%,NONE,"DOC1:p24,DOC3:p5",answered
+26,C026,Q026,7.7%,NONE,"DOC2:p3,DOC3:p5",answered
+27,C027,Q027,2.4%,NONE,DOC2:p3,answered
+28,C028,Q028,The documents do not provide information about India's unemployment rate in 2010.,NONE,NONE,not_found
+29,C029,Q029,China's economy did not contract in 2009; it experienced a slight decrease in growth rate.,NONE,DOC1:p31,false_premise
+30,C030,Q030,"Lehman Brothers went bankrupt on September 15, 2008.",NONE,NONE,not_found
+31,C031,Q031,9.4%,Figure A-7,"DOC1:p7,DOC2:Figure A-7,DOC2:p6",answered
+32,C032,Q032,-1.7%,NONE,"DOC2:p7,DOC1:p6",answered
+33,C032,Q033,-4.1%,Table A-3,"DOC2:p7,DOC2:Table A-3",answered
+34,C032,Q034,Spending was larger by 6.4 percentage points.,Table A-3,DOC2:p7,answered
+35,C033,Q035,The Euro area would have been 1.0 percentage point worse than the advanced-economy average in 2009.,NONE,DOC1:p13,session_override
+36,C033,Q036,-4.2%,NONE,"DOC1:p7,DOC3:p2",session_override
+37,C033,Q037,-6.0%,NONE,DOC1:p37,session_override
+38,C034,Q038,-4.2%,NONE,DOC1:p7,answered
+39,C035,Q039,"China's output growth in 2014 was 7.3%, which is lower than the 2013 outturn of 7.7%",NONE,DOC2:p3,session_override
+40,C035,Q040,"No, the documents do not provide a figure for China's output growth in 2014.",NONE,DOC1:p35,session_override
