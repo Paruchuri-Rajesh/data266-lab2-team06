@@ -56,6 +56,28 @@ if IN_COLAB:
     os.chdir(REPO_DIR)
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     print("cwd:", os.getcwd(), "| commit:", commit)
+elif IN_KAGGLE:
+    # Optional on Kaggle: with a GH_TOKEN secret (Add-ons -> Secrets) the repo is fetched so the golden-set
+    # evaluation also runs and the committed figure descriptions are reused. Without it, only submission.csv is made.
+    try:
+        from kaggle_secrets import UserSecretsClient
+        _tok = UserSecretsClient().get_secret("GH_TOKEN")
+    except Exception:
+        _tok = None
+    if _tok:
+        REPO_DIR = "/kaggle/working/team_repo"
+        if not os.path.isdir(REPO_DIR):
+            _r = subprocess.run(["git", "clone", "-q", "--depth", "1",
+                                 REPO_URL.replace("https://", f"https://x-access-token:{_tok}@"), REPO_DIR],
+                                capture_output=True, text=True)
+            print("repo clone:", "ok" if _r.returncode == 0 else (_r.stderr or "").replace(_tok, "<GH_TOKEN>"))
+        if os.path.isdir(REPO_DIR):
+            print("commit:", subprocess.run(["git", "-C", REPO_DIR, "rev-parse", "--short", "HEAD"],
+                                            capture_output=True, text=True).stdout.strip())
+            shutil.rmtree(os.path.join(REPO_DIR, ".git"), ignore_errors=True)   # keep the output folder small
+            os.chdir(REPO_DIR)
+    else:
+        print("No GH_TOKEN Kaggle secret: golden-set evaluation will be skipped.")
 
 # %%
 # Pinned installs (Kaggle needs "Internet on" in notebook settings)
