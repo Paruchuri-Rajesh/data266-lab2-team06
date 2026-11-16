@@ -5,4 +5,4 @@ p3-v1.0 commit: <sha>
 HF Part 2 model (run 1): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r4
 HF Part 2 model (run 2): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r32
 HF Part 2 image dataset: https://huggingface.co/datasets/Rajesh-Paruchuri/data266-p2-generations
-Final Kaggle notebook: https://www.kaggle.com/code/<user>/<notebook>
+Final Kaggle notebook: https://www.kaggle.com/code/rajeshparuchuri/data266-lab2-part1-team06
