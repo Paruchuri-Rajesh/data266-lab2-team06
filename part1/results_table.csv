@@ -1,4 +1,4 @@
 system,answer correctness (/25),retrieval recall@5,citation accuracy,median s/question
-baseline (dense only),15,0.88,0.483,7.37
-final (hybrid),18,1.0,0.69,8.77
-final + reranker (bonus),18,1.0,0.653,9.62
+baseline (dense only),14,0.88,0.483,6.46
+final (hybrid),17,1.0,0.69,7.89
+final + reranker (bonus),18,1.0,0.653,8.58

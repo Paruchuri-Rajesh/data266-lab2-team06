@@ -18,7 +18,7 @@ id,conversation_id,question_id,answer,figure_references,citations,status
 17,C017,Q017,11.4%,Figure A-3,"DOC2:Figure A-3,DOC2:p4,DOC1:Table 1-3,DOC1:p7",answered
 18,C018,Q018,0.45,Figure A-4,"DOC2:Figure A-4,DOC2:p5",answered
 19,C019,Q019,1.57,Figure A-5,"DOC2:Figure A-5,DOC2:p5,DOC1:Table 1-2,DOC1:p5",answered
-20,C020,Q020,Austria,NONE,"DOC2:Figure A-6,DOC2:p6,DOC2:Figure A-7",answered
+20,C020,Q020,Austria,"Figure A-6,Figure A-7","DOC2:Figure A-6,DOC2:p6,DOC2:Figure A-7",answered
 21,C021,Q021,4.1%,Figure B-5 (corrected),"DOC3:Figure B-5,DOC3:p5,DOC3:Figure B-5 (corrected),DOC3:p6",answered
 22,C022,Q022,0.3,Figure B-4,"DOC3:Figure B-4,DOC3:p4,DOC1:Table 1-2,DOC1:p5",answered
 23,C023,Q023,-1.8,NONE,"DOC2:Table A-2,DOC2:p3",answered
@@ -27,7 +27,7 @@ id,conversation_id,question_id,answer,figure_references,citations,status
 26,C026,Q026,7.7,NONE,"DOC2:Table A-2,DOC2:p3,DOC1:p11",answered
 27,C027,Q027,2.4%,NONE,DOC2:p3,answered
 28,C028,Q028,Not in the knowledge base.,NONE,NONE,not_found
-29,C029,Q029,"False premise: [{'year': 2009, 'value': 9.2, 'unit': '%', 'source': 'E1'}, {'year': 2009, 'value': 4.3, 'unit': '%', 'source': 'E3'}, {'year': 2009, 'value': 4.3, 'unit': '%', 'source': 'E9'}]",NONE,"DOC1:Table 1-4,DOC1:p11,DOC3:Figure B-5,DOC3:p5",false_premise
+29,C029,Q029,China's economy did not contract in 2009.,NONE,"DOC1:Table 1-4,DOC1:p11",false_premise
 30,C030,Q030,Not in the knowledge base.,NONE,NONE,not_found
 31,C031,Q031,9.9%,NONE,"DOC1:Table 1-3,DOC1:p7,DOC2:Table A-2,DOC2:p3",answered
 32,C032,Q032,-1.7%,NONE,"DOC2:Table A-3,DOC2:p7",answered
