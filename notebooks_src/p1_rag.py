@@ -520,13 +520,19 @@ def retrieve(query, named_labels=(), mode="hybrid", rerank=False):
         # they are added back below only as clearly-labelled 'related' items
         ranked = [u for u in ranked if not (UID[u]["kind"] == "figure" and UID[u]["figure_id"].lower() not in named
                                             and re.sub(r"\s*\(.*\)", "", UID[u]["figure_id"]).lower() in base)]
-    texts = [u for u in ranked if UID[u]["kind"] == "text"]
-    figs = [u for u in ranked if UID[u]["kind"] == "figure"]
     out = list(dict.fromkeys(pinned))
+    n_text = n_fig = 0
+    for u in ranked:   # texts and figures/tables interleaved by their fused rank, each with its own budget
+        if u in out:
+            continue
+        if UID[u]["kind"] == "text" and n_text < TOP_K_TEXT:
+            out.append(u); n_text += 1
+        elif UID[u]["kind"] == "figure" and n_fig < TOP_K_FIG:
+            out.append(u); n_fig += 1
     if mode != "dense":
-        for d in DOCS:   # keep at least the best hit per trusted doc
-            out += [u for u in texts if UID[u]["doc_id"] == d][:PER_DOC_MIN]
-    out += texts[:TOP_K_TEXT] + figs[:TOP_K_FIG]
+        for d in DOCS:   # keep at least the best hit per document (helps conflict / two-source questions)
+            if not any(UID[u]["doc_id"] == d for u in out):
+                out += [u for u in ranked if UID[u]["doc_id"] == d][:PER_DOC_MIN]
     return [UID[u] for u in dict.fromkeys(out)][:TOP_K_TEXT + TOP_K_FIG + 4]
 
 def related_variants(named_labels):
@@ -546,7 +552,9 @@ ASSUME_RE = re.compile(r"\b(assume|assuming|suppose|let'?s say|for this (chat|co
                        r"pretend|imagine|hypothetically|treat .* as|use .* instead|actually,? (it|the)|i (was told|heard|read) that)\b", re.I)
 PERMANENT_RE = re.compile(r"\b(update|change|edit|correct|overwrite|modify|replace|fix|rewrite|save|store)\b.*"
                           r"\b(document|doc\d|knowledge base|database|kb|source|record|file|permanently|for everyone|future)\b", re.I)
-FOLLOWUP_RE = re.compile(r"^\s*(and|what about|how about|same|also|then|in \d{4}|that|it|those|this)\b", re.I)
+FOLLOWUP_RE = re.compile(r"^\s*(and|what about|how about|same|also|then|in \d{4}|that|it|those|this)\b|"
+                         r"\b(that|this|the same|those) (year|value|figure|number|rate|share|period|one|chart|table)\b|"
+                         r"\bthat \d", re.I)
 
 SYSTEM_RULES = """You answer questions about a READ-ONLY knowledge base of three economics documents:
 DOC1 (trust high; Blanchard, Macroeconomics Ch.1-2; values for 2011-2012 marked * are FORECASTS),
@@ -559,7 +567,13 @@ Rules:
 2. If documents disagree with no revision note, status = "conflict": give both values with their documents and prefer the higher-trust source.
 3. If the evidence does not support an answer, status = "not_found".
 4. If the question assumes something false (wrong value, wrong direction, a figure/fact that does not exist, a claim only made by untrusted text), status = "false_premise" and state the correct fact.
-5. If the user supplied or changed a value in this conversation ("assume...", "for this chat..."), use it for this conversation only, ALSO state what the documents report, status = "session_override". If asked to change the documents permanently, refuse, report the document value, status = "session_override".
+5. If the user supplied or changed a value in this conversation ("assume...", "for this chat..."), use it for this conversation only, ALSO state what the documents report, status = "session_override". If asked to change the documents permanently, refuse, say the knowledge base is unchanged, report the DOCUMENT value (never the user's value as if it were in the documents), status = "session_override".
+6. Values in DOC1 for 2011 and 2012 are fall-2011 forecasts. If DOC2 gives an outturn for the same variable and year, the outturn is the answer (mention the forecast it replaces).
+7. Before answering, compare the evidence: if two documents give DIFFERENT numbers for the same variable and year and no revision, erratum or forecast/outturn note explains it, the status MUST be "conflict" (give both values with their documents, prefer the higher-trust one).
+8. For a difference, change, error or prediction, write the calculation explicitly (e.g. "-0.7 - 1.1 = -1.8") and check the signs.
+9. If the question asks what the documents themselves report, give the document value (status "answered" unless rules 2-4 apply), even if the user supplied a different value earlier.
+10. Follow-up questions ("that year", "it", "and in 2013?") refer to the variable and year of the previous turn unless they name new ones.
+11. With status "not_found", do not add facts from general knowledge.
 Be concise (max 80 words), quote exact numbers with units and years.
 
 Reply with ONE JSON object only:
@@ -601,9 +615,14 @@ class Conversation:
         if supplies_value:
             self.user_values.append(q)
         named = find_labels(q)
-        is_followup = bool(self.turns) and (FOLLOWUP_RE.search(q) or len(q.split()) <= 6)
+        is_followup = bool(self.turns) and (FOLLOWUP_RE.search(q) or len(q.split()) <= 6 or wants_permanent)
         if not named and is_followup:
             named = list(self.labels)
+        known_figs = {it["figure_id"] for it in USABLE if it["kind"] == "figure"}
+        superseded = [(l, f"{l} (corrected)") for l in named
+                      if f"{l} (corrected)" in known_figs and f"{l} (corrected)" not in named]
+        if superseded:   # an erratum replaces the original figure: answer from the corrected version
+            named = list(dict.fromkeys(named + [c for _, c in superseded]))
         if named:
             self.labels = named
         # retrieval query: current question + previous user turn for follow-ups (same conversation only)
@@ -622,6 +641,8 @@ class Conversation:
             flags.append("The user asks to change the documents permanently: refuse that part.")
         if named:
             flags.append(f"The question is about {', '.join(named)}: take values only from that exact figure/table.")
+        for orig, corr in superseded:
+            flags.append(f"{corr} supersedes {orig} (erratum): give the value from {corr}, mention the original value, and reference {corr}.")
         user_msg = (f"EVIDENCE:\n" + "\n\n".join(ev_lines) +
                     f"\n\nEARLIER TURNS OF THIS CONVERSATION:\n{hist or 'none'}\n"
                     f"USER-SUPPLIED VALUES (this conversation only, not in the documents):\n{uv}\n"
@@ -630,20 +651,26 @@ class Conversation:
         imgs = [Image.open(it["image_path"]).convert("RGB") for it in ev
                 if it["kind"] == "figure" and it["figure_id"] in named][:2]
         raw = vlm_generate(SYSTEM_RULES, user_msg, imgs, max_new_tokens=260)
-        a = self._post(parse_json(raw), ev, named, supplies_value, raw)
+        a = self._post(parse_json(raw), ev, named, supplies_value, raw, wants_permanent, superseded)
         a["_retrieved"] = [cite_string(it) for it in ev[:5]] + [f"{it['doc_id']}:p{it['page']}" for it in ev[:5]]
         a["_seconds"] = time.time() - t0
         self.turns.append({"q": q, "a": a})
         return a
 
-    def _post(self, obj, ev, named, supplies_value, raw):
+    def _post(self, obj, ev, named, supplies_value, raw, wants_permanent=False, superseded=()):
         ans = " ".join(str(obj.get("answer") or raw).split())
         ans = " ".join(ans.split()[:MAX_ANSWER_WORDS])
         status = str(obj.get("status", "")).strip().lower()
         if status not in STATUSES:
             status = "answered"
-        if supplies_value:
+        if supplies_value or wants_permanent:
             status = "session_override"
+        elif status == "session_override" and not self.user_values:
+            status = "answered"          # nothing was supplied by the user in this conversation
+        if status == "not_found":
+            ans = "Not in the knowledge base."
+        if wants_permanent and "unchanged" not in ans.lower():
+            ans = "The knowledge base is read-only and stays unchanged; your value applies to this conversation only. " + ans
         cites = []
         for c in obj.get("citations") or []:
             m = re.search(r"E(\d+)", str(c))
@@ -660,6 +687,8 @@ class Conversation:
         figs = [f for f in (obj.get("figure_references") or []) if isinstance(f, str) and f in known]
         figs = [f for f in figs if f in named or f in cited_figs]
         figs = list(dict.fromkeys([f for f in named if f in known] + figs)) if status != "not_found" else []
+        old_versions = {o for o, _ in superseded}
+        figs = [f for f in figs if f not in old_versions]   # cite the corrected version only
         return {"answer": ans, "status": status, "citations": list(dict.fromkeys(cites)),
                 "figure_references": figs}
 
@@ -721,17 +750,21 @@ print("Golden set:", GOLDEN_PATH, "| run eval:", RUN_GOLDEN_EVAL)
 
 NUM_RE = re.compile(r"-?\d[\d,]*\.?\d*")
 def nums(s):
-    return [float(x.replace(",", "")) for x in NUM_RE.findall(str(s)) if x.replace(",", "").replace(".", "").replace("-", "")]
+    s = str(s).replace("\u2212", "-").replace("\u2013", "-")
+    return [float(x.replace(",", "")) for x in NUM_RE.findall(s) if x.replace(",", "").replace(".", "").replace("-", "")]
 
 def is_correct(ans, row):
     if ans["status"] != row["gold_status"].strip():
         return False
     found = nums(ans["answer"])
     for g in nums(row["gold_numbers"]):
-        if not any(abs(f - g) <= abs(g) * 0.01 + 1e-9 for f in found):
+        if not any(abs(abs(f) - abs(g)) <= abs(g) * 0.01 + 1e-9 for f in found):
             return False
     kws = [k.strip().lower() for k in str(row["gold_keywords"]).split(";") if k.strip()]
     return all(k in ans["answer"].lower() for k in kws)
+
+FIG_PAGE = {f"{it['doc_id']}:{it['figure_id']}".lower(): f"{it['doc_id']}:p{it['page']}".lower()
+            for it in ITEMS if it["kind"] == "figure"}   # e.g. doc2:table a-2 -> doc2:p3
 
 def run_golden(mode, rerank=False):
     g = pd.read_csv(GOLDEN_PATH, dtype=str, keep_default_na=False)
@@ -742,7 +775,7 @@ def run_golden(mode, rerank=False):
             a = chat.answer(r["question"])
             gold = {s.strip().lower() for s in r["gold_sources"].split(";") if s.strip()}
             retrieved = [x.lower() for x in a["_retrieved"]]
-            recall5 = any(s in retrieved for s in gold) if gold else True
+            recall5 = any(s in retrieved or FIG_PAGE.get(s) in retrieved for s in gold) if gold else True
             cited = [c.lower() for c in a["citations"]]
             cit_acc = (sum(c in gold for c in cited) / len(cited)) if cited else float(not gold)
             out.append({"gid": r["gid"], "category": r["category"], "question": r["question"],
