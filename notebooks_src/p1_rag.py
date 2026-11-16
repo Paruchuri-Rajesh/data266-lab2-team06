@@ -574,11 +574,14 @@ Rules:
 9. If the question asks what the documents themselves report, give the document value (status "answered" unless rules 2-4 apply), even if the user supplied a different value earlier.
 10. Follow-up questions ("that year", "it", "and in 2013?") refer to the variable and year of the previous turn unless they name new ones.
 11. With status "not_found", do not add facts from general knowledge.
+12. Every number in the answer must appear in the evidence for exactly the country, variable and year asked. If the evidence has no value for that country/variable/year, status = "not_found" (do not substitute another country's or year's value).
+13. "Why"/"how come" questions: first check the premise against the evidence. If the evidence shows the opposite, status = "false_premise" and state the correct fact.
 Be concise (max 80 words), quote exact numbers with units and years.
 
 Reply with ONE JSON object only:
 {"answer": "...", "status": "answered|not_found|conflict|false_premise|session_override",
- "citations": ["E1", "E3"], "figure_references": ["Figure A-3"]}
+ "citations": ["E1", "E3"], "figure_references": ["Figure A-3"], "calculation": "10.3 - 7.7"}
+calculation = the arithmetic expression behind any difference/sum/change in the answer (numbers and + - * / only), "" if none.
 citations = evidence numbers that support each fact. figure_references = exact labels of figures/tables you used (copy them exactly, including "(corrected)"), [] if none."""
 
 STATUSES = {"answered", "not_found", "conflict", "false_premise", "session_override"}
@@ -641,6 +644,13 @@ class Conversation:
             flags.append("The user asks to change the documents permanently: refuse that part.")
         if named:
             flags.append(f"The question is about {', '.join(named)}: take values only from that exact figure/table.")
+        years = {int(y) for y in re.findall(r"\b(20[01]\d)\b", q + " " + rq)}
+        if years & {2011, 2012, 2013}:
+            flags.append("DOC1 values for 2011-2012 are fall-2011 forecasts; where DOC2 reports an outturn for the same variable and year, use the DOC2 outturn.")
+        if re.match(r"\s*(why|how come|what caused)\b", q, re.I):
+            flags.append("Check the premise of the question against the evidence before explaining it.")
+        if supplies_value:
+            flags.append("Also state the value the documents report for the same item.")
         for orig, corr in superseded:
             flags.append(f"{corr} supersedes {orig} (erratum): give the value from {corr}, mention the original value, and reference {corr}.")
         user_msg = (f"EVIDENCE:\n" + "\n\n".join(ev_lines) +
@@ -687,6 +697,15 @@ class Conversation:
         figs = [f for f in (obj.get("figure_references") or []) if isinstance(f, str) and f in known]
         figs = [f for f in figs if f in named or f in cited_figs]
         figs = list(dict.fromkeys([f for f in named if f in known] + figs)) if status != "not_found" else []
+        calc = str(obj.get("calculation") or "").replace("\u2212", "-").strip()
+        if calc and status != "not_found" and re.fullmatch(r"[\d\.\s\+\-\*/\(\)]+", calc) and re.search(r"\d\s*[\+\-\*/]\s*\(?-?\d", calc) and "**" not in calc and len(calc) < 80:
+            try:
+                val = round(eval(calc, {"__builtins__": {}}, {}), 2)   # digits/operators only (checked above)
+                val_s = f"{val:g}"
+                if val_s not in ans:
+                    ans = f"{ans} (calculation: {calc} = {val_s})"
+            except Exception:
+                pass
         old_versions = {o for o, _ in superseded}
         figs = [f for f in figs if f not in old_versions]   # cite the corrected version only
         return {"answer": ans, "status": status, "citations": list(dict.fromkeys(cites)),
