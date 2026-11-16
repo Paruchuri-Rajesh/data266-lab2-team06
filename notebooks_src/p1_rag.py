@@ -200,6 +200,9 @@ def norm_label(kind, num, corr=None):
 
 def find_labels(text):
     """All figure/table labels mentioned in text, normalised (keeps the '(corrected)' variant distinct)."""
+    # "Figures A-6 and A-7" / "Tables 1-2 and 1-3" -> "Figure A-6 and Figure A-7"
+    text = re.sub(r"\b(Figure|Table)s\s+([A-Z]?-?\d+(?:-\d+)?)\s*(and|&|,)\s*([A-Z]?-?\d+(?:-\d+)?)\b",
+                  lambda m: f"{m.group(1)} {m.group(2)} {m.group(3)} {m.group(1)} {m.group(4)}", text)
     return [norm_label(k, n, c) for k, n, c in LABEL_RE.findall(text)]
 
 def sanitize(text, where=""):
@@ -769,13 +772,15 @@ class Conversation:
             v_raw = vlm_generate(PREMISE_RULES, "EVIDENCE:\n" + "\n\n".join(ev_lines) +
                                  f"\n\nCLAIM: {m_why.group(1)}\nJSON:", [], max_new_tokens=160)
             premise = parse_json(v_raw)
-        if premise and premise.get("supported") is False and premise.get("fact"):
-            raw = json.dumps(premise)
-            obj = {"answer": f"False premise: {premise['fact']}", "status": "false_premise",
-                   "citations": premise.get("citations") or [], "figure_references": []}
+        if premise and premise.get("supported") is False:
+            # premise contradicted by the evidence: answer normally, but told to correct the premise
+            user_msg = user_msg.replace("\nQUESTION:", "\nNOTES: The premise of this question is FALSE according to "
+                                        "the evidence. Say so, give the correct values with years, status = \"false_premise\".\nQUESTION:")
+        raw = vlm_generate(SYSTEM_RULES, user_msg, imgs, max_new_tokens=260)
+        obj = parse_json(raw)
+        if premise and premise.get("supported") is False:
+            obj["status"] = "false_premise"
         else:
-            raw = vlm_generate(SYSTEM_RULES, user_msg, imgs, max_new_tokens=260)
-            obj = parse_json(raw)
             if m_why and str(obj.get("status", "")).lower() in ("answered", "conflict") and \
                     DENIAL_RE.search(str(obj.get("answer", ""))):
                 obj["status"] = "false_premise"     # the explanation itself rejects the premise
