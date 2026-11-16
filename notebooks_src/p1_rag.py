@@ -414,6 +414,8 @@ def describe_figure(f):
     return vlm_generate(FIG_SYSTEM, prompt, [Image.open(f["image_path"]).convert("RGB")], max_new_tokens=450)
 
 DESC_CACHE = os.path.join(WORK_DIR, "p1_fig_descriptions.json")
+if not os.path.exists(DESC_CACHE) and os.path.exists("part1/fig_descriptions.json"):
+    shutil.copy("part1/fig_descriptions.json", DESC_CACHE)   # Colab: reuse the committed descriptions (same model/prompt)
 cache = json.load(open(DESC_CACHE)) if os.path.exists(DESC_CACHE) else {}
 t0 = time.time()
 for f in ALL_FIGS:
