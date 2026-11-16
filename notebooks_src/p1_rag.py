@@ -34,8 +34,10 @@ print({"commit": commit, "python": sys.version.split()[0], "torch": torch.__vers
 
 # %%
 import os, re, glob, shutil
-IN_COLAB = "google.colab" in sys.modules
-IN_KAGGLE = bool(os.environ.get("KAGGLE_KERNEL_RUN_TYPE")) and not IN_COLAB   # Colab also has /kaggle/input now
+# Kaggle sets KAGGLE_KERNEL_RUN_TYPE; its newer images also ship google.colab, and Colab now has /kaggle/input,
+# so the environment variable decides first.
+IN_KAGGLE = any(os.environ.get(k) for k in ("KAGGLE_KERNEL_RUN_TYPE", "KAGGLE_URL_BASE", "KAGGLE_KERNEL_INTEGRATIONS"))
+IN_COLAB = "google.colab" in sys.modules and not IN_KAGGLE
 print("Kaggle:", IN_KAGGLE, "| Colab:", IN_COLAB)
 
 # Colab only: clone the team repo (needs the GH_TOKEN secret) so the golden set is found and results can be committed.
@@ -890,6 +892,8 @@ for conv_id, turns in q.groupby("conversation_id", sort=False):
     del chat
 sub = pd.DataFrame(rows).set_index("id").loc[q["id"]].reset_index()
 sub.to_csv(os.path.join(WORK_DIR, "submission.csv"), index=False)
+if os.path.isdir("/kaggle/working") and os.access("/kaggle/working", os.W_OK) and WORK_DIR != "/kaggle/working":
+    sub.to_csv("/kaggle/working/submission.csv", index=False)   # Kaggle only keeps files from /kaggle/working
 print(f"{len(sub)} rows in {time.time()-t_all:.0f}s | median {np.median(times):.1f}s/question")
 print(sub["status"].value_counts()); sub.head(10)
 
