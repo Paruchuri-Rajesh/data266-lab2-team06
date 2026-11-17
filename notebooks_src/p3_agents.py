@@ -74,7 +74,7 @@ print("cwd:", os.getcwd(), "| commit:",
 
 # %%
 !pip -q install "transformers==4.51.3" "qwen-vl-utils==0.0.10" "diffusers==0.31.0" "peft==0.14.0" \
-    "accelerate==1.2.1" "gradio==4.44.1" "pandas" "pillow"
+    "accelerate==1.2.1" "gradio==4.44.1" "pandas"   # keep Colab's Pillow (upgrading it mid-session breaks image saving)
 !pip uninstall -y -q torchao   # Colab's torchao 0.10 breaks peft's LoRA injection; not needed here
 
 # %%
@@ -123,10 +123,14 @@ if not os.path.exists(SELF_IMG) and IN_COLAB:
     up = files.upload()      # choose your own selfie (JPG/PNG)
     if up:
         name = next(iter(up))
-        from PIL import ImageOps
-        _im = ImageOps.exif_transpose(_PILImage.open(name)).convert("RGB")   # upload() saved it in cwd; fix phone rotation
-        _im.thumbnail((1024, 1024)); _im.save(SELF_IMG, quality=90)
-        os.remove(name)
+        import shutil
+        try:
+            from PIL import ImageOps
+            _im = ImageOps.exif_transpose(_PILImage.open(name)).convert("RGB")   # fix phone rotation
+            _im.thumbnail((1024, 1024)); _im.save(SELF_IMG, quality=90)
+            os.remove(name)
+        except Exception as e:      # e.g. Pillow upgraded after import -> keep the uploaded file as is
+            print("resize skipped:", type(e).__name__); shutil.move(name, SELF_IMG)
 print("team member photo present:", os.path.exists(SELF_IMG))
 
 # %% [markdown]
