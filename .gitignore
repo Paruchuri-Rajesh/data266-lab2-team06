@@ -15,3 +15,7 @@ kaggle.json
 __pycache__/
 .ipynb_checkpoints/
 part3/images/photo_person_self.*
+report/*.aux
+report/*.log
+report/*.out
+report/missfont.log

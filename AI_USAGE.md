@@ -18,6 +18,13 @@ Claude Code at the team's request, after looking at our image set, and were revi
 the evaluation run. The six scene photos were chosen by Claude Code from CC0 images on Wikimedia Commons (sources in
 `part3/images/LICENSES.md`); the team member photo is our own.
 
+Report: the LaTeX skeleton (`report/main.tex`: section structure, figure/table placement, references and per-section
+checklists of facts to cover), the architecture diagrams and the results tables (`report/build_assets.py`, which reads the
+notebooks' output files) were produced with Claude Code. The report prose is written by the team.
+
+Part 1 leaderboard: the team's selected leaderboard submission (`submission_gh_v7.csv`) came from a separate pipeline by a
+team member - <DECLARE any AI assistant used for it>.
+
 Not AI-generated: all human evaluations (ratings and judgements) and the report text.
 
 # Hosted models / APIs used (none are paid APIs; all open weights run on one T4)

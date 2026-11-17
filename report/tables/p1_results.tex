@@ -1,0 +1,11 @@
+\begin{table}[t]\centering
+\caption{Part 1 results on the 25-question golden set (Colab T4).}\label{tab:p1}
+\resizebox{\columnwidth}{!}{\begin{tabular}{lccc}\toprule
+Measurement & Baseline (dense) & Final (hybrid) & + reranker \\\midrule
+Correct answers (/25) & 14 & 17 & 18 \\
+Recall@5 & 0.88 & 1.00 & 1.00 \\
+Citation accuracy & 0.483 & 0.690 & 0.653 \\
+Groundedness, mean of 2 raters (1--5) & -- & 2.78 & -- \\
+Raters within 1 point & -- & 0.56 & -- \\
+Median s / question & 6.46 & 7.89 & 8.58 \\\bottomrule
+\end{tabular}}\end{table}

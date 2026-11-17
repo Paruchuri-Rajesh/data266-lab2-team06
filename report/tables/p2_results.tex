@@ -1,0 +1,17 @@
+\begin{table}[t]\centering
+\caption{Part 2 results: SD 1.5 base vs.\ LoRA runs (40 images per model, T4).}\label{tab:p2}
+\resizebox{\columnwidth}{!}{\begin{tabular}{lccc}\toprule
+Measurement & Base & Run 1 (r=4) & Run 2 (r=32, final) \\\midrule
+KID, in-domain ($\downarrow$) & 0.1411 & 0.0613 & 0.0405 \\
+CLIP score, all 40 prompts & 32.37 & 31.41 & 30.64 \\
+CLIP score, in-domain & 30.62 & 29.42 & 28.37 \\
+LPIPS diversity & 0.7858 & 0.7803 & 0.7886 \\
+NSFW-flagged images (/40) & 0 & 0 & 3 \\
+Human win rate vs.\ base, style & -- & -- & 0.547 \\
+Human win rate vs.\ base, prompt & -- & -- & 0.520 \\
+GPU-hours (training) & 0 & 0.733 & 0.949 \\
+Peak GPU memory (GiB) & -- & 4.26 & 4.35 \\
+Seconds / image (generation) & 5.62 & 6.15 & 6.15 \\\bottomrule
+\end{tabular}}
+\vspace{2pt}\footnotesize Human evaluation: 3 raters, 75 judgements (blinded, final run vs.\ base).
+\end{table}

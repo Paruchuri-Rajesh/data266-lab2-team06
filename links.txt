@@ -1,5 +1,5 @@
 GitHub repository: https://github.com/Paruchuri-Rajesh/data266-lab2-team06
-p1-v1.0 commit: <sha>
+p1-v1.0 commit: 4dd5fc7
 p2-v1.0 commit: f54a892
 p3-v1.0 commit: d11880a
 HF Part 2 model (run 1): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r4
