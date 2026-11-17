@@ -4,11 +4,14 @@
   "without_critique": {
     "median_seconds_per_request": 15.663,
     "auto_route_accuracy": "15/15",
-    "task_success_rate": "PENDING human judgements"
+    "inter_rater_agreement": 0.8,
+    "task_success_rate": "13/15"
   },
   "with_critique": {
     "median_seconds_per_request": 19.334,
     "auto_route_accuracy": "15/15",
-    "task_success_rate": "PENDING human judgements"
+    "inter_rater_agreement": 0.667,
+    "task_success_rate": "9/15",
+    "critic_agreement": 0.944
   }
 }
