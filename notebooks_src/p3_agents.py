@@ -74,7 +74,7 @@ print("cwd:", os.getcwd(), "| commit:",
 
 # %%
 !pip -q install "transformers==4.51.3" "qwen-vl-utils==0.0.10" "diffusers==0.31.0" "peft==0.14.0" \
-    "accelerate==1.2.1" "gradio==4.44.1" "pandas"   # keep Colab's Pillow (upgrading it mid-session breaks image saving)
+    "accelerate==1.2.1" "gradio==4.44.1" "pydantic==2.10.6" "pandas"   # keep Colab's Pillow (upgrading it mid-session breaks image saving)
 !pip uninstall -y -q torchao   # Colab's torchao 0.10 breaks peft's LoRA injection; not needed here
 
 # %%

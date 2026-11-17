@@ -23,11 +23,12 @@ checklists of facts to cover), the architecture diagrams and the results tables 
 notebooks' output files) were produced with Claude Code. The report prose is written by the team.
 
 Part 1 leaderboard: the team's selected leaderboard submission (`submission_gh_v7.csv`) came from a separate pipeline by a
-team member - <DECLARE any AI assistant used for it>.
+team member - Claude Code (Claude Sonnet 5.5) was used to write, run and debug that pipeline and the second implementation under `sivasurya_chandran/`; the details are in `sivasurya_chandran/AI_USAGE.md`.
 
-Not AI-generated: all human evaluations (ratings and judgements) and the report text.
+Not AI-generated: all human evaluations (ratings and judgements). The main report text was written by the team. Appendix A of the report, and the sentences that fill the draft's open fields (how the golden set was checked, the Kaggle run time, how the separate pipeline differs, the Appendix C safety example, the failing prompts in Figs. 4-5, the review of the three flagged images, the Part 3 tie-break rule and the S14/S15 note, the Gradio statement, the conclusion's 'more time' sentence, and the contributions and AI-usage entries in the report), were drafted with Claude Code (Claude Sonnet 5.5) from the repositories' result files and figures, and applied to the shared draft by Claude Code.
 
 # Hosted models / APIs used (none are paid APIs; all open weights run on one T4)
 - Part 1: Qwen/Qwen2.5-VL-7B-Instruct (4-bit nf4), BAAI/bge-small-en-v1.5, BAAI/bge-reranker-base (bonus)
 - Part 2: stable-diffusion-v1-5/stable-diffusion-v1-5, openai/clip-vit-base-patch16, LPIPS (alex)
 - Part 3: Qwen/Qwen2.5-VL-3B-Instruct, SD 1.5 + our Part 2 LoRA, timbrooks/instruct-pix2pix, openai/clip-vit-base-patch32
+- Siva's implementation (`sivasurya_chandran/`): Qwen/Qwen2.5-VL-7B-Instruct (4-bit, Parts 1 and 3), Qwen/Qwen2.5-14B-Instruct (4-bit, Part 1 answers), BAAI/bge-small-en-v1.5, stable-diffusion-v1-5/stable-diffusion-v1-5, timbrooks/instruct-pix2pix, openai/clip-vit-base-patch32, LPIPS (alex)
