@@ -1,125 +1,125 @@
 {
-  "_note": "TEMPLATE - EXAMPLES ONLY. Rewrite every request/rubric for your own images in part3/images/, then git commit this file BEFORE running the evaluation (the Git timestamp is checked).",
+  "_note": "Team 06 scenarios for our own image set (part3/images/, licenses in part3/images/LICENSES.md). Committed before the evaluation run.",
   "scenarios": [
     {
       "id": "S01",
       "category": "caption_question",
-      "image": "part3/images/photo_street.jpg",
-      "request": "Describe this image.",
+      "image": "part3/images/photo_canal_street.jpg",
+      "request": "What is in this picture? Give me a short caption.",
       "expected_route": "caption_question",
-      "rubric": "PASS if caption names the main subject and setting correctly and lists >=3 real objects."
+      "rubric": "PASS if the caption mentions the canal/water and at least 3 of: the boat under a blue cover, the white footbridge, bare trees, apartment buildings, a person jogging; FAIL if it invents objects that are not there."
     },
     {
       "id": "S02",
       "category": "caption_question",
-      "image": "part3/images/photo_kitchen.jpg",
-      "request": "How many cups are on the table?",
+      "image": "part3/images/photo_cafe_table.jpg",
+      "request": "How many cups of coffee are on the table, and what is drawn in the milk foam?",
       "expected_route": "caption_question",
-      "rubric": "PASS if the count is correct (check yourself) and no hallucinated objects."
+      "rubric": "PASS if it says one cup and identifies the heart shape in the foam; FAIL if the count is wrong or the foam art is described as something else."
     },
     {
       "id": "S03",
       "category": "caption_question",
-      "image": "part3/images/photo_sign.jpg",
-      "request": "What does the sign say?",
+      "image": "part3/images/photo_stop_sign.jpg",
+      "request": "Read out the words printed on the signs.",
       "expected_route": "caption_question",
-      "rubric": "PASS if visible_text matches the sign verbatim."
+      "rubric": "PASS if both STOP and ALL-WAY are reported and no extra words are made up."
     },
     {
       "id": "S04",
       "category": "style_change",
-      "image": "part3/images/photo_street.jpg",
-      "request": "Turn this into a watercolour painting.",
+      "image": "part3/images/photo_mountain_lake.jpg",
+      "request": "Repaint this as an oil painting with thick brush strokes.",
       "expected_route": "style_change",
-      "rubric": "PASS if output is clearly watercolour and the scene layout is preserved."
+      "rubric": "PASS if the result looks clearly painted (visible strokes) and still shows the snowy peak, the tree line and the reflection in the lake."
     },
     {
       "id": "S05",
       "category": "style_change",
       "image": "part3/images/photo_dog.jpg",
-      "request": "Make it look like a pencil sketch.",
+      "request": "Turn this photo into a black-and-white charcoal drawing.",
       "expected_route": "style_change",
-      "rubric": "PASS if pencil-sketch look and the dog is still recognisable."
+      "rubric": "PASS if the output is monochrome with a drawn/charcoal texture and the sitting dog is still recognisable."
     },
     {
       "id": "S06",
       "category": "style_change",
-      "image": "part3/images/photo_landscape.jpg",
-      "request": "Repaint this in a cyberpunk neon style at night.",
+      "image": "part3/images/photo_canal_street.jpg",
+      "request": "Make this scene look like a watercolour painting.",
       "expected_route": "style_change",
-      "rubric": "PASS if neon/night style and same landscape composition."
+      "rubric": "PASS if the output has a soft watercolour look and keeps the canal, boat and bridge in roughly the same places."
     },
     {
       "id": "S07",
       "category": "edit",
       "image": "part3/images/photo_dog.jpg",
-      "request": "Add a red hat to the dog.",
+      "request": "Give the dog a yellow raincoat.",
       "expected_route": "edit",
-      "rubric": "PASS if a red hat appears on the dog and the rest is mostly unchanged."
+      "rubric": "PASS if a yellow coat appears on the dog and the grass, lake and tree stay mostly the same."
     },
     {
       "id": "S08",
       "category": "edit",
-      "image": "part3/images/photo_landscape.jpg",
-      "request": "Make it winter with snow on the ground.",
+      "image": "part3/images/photo_mountain_lake.jpg",
+      "request": "Change the sky to a bright orange sunset.",
       "expected_route": "edit",
-      "rubric": "PASS if snow is added and the scene is otherwise the same."
+      "rubric": "PASS if the sky becomes orange/sunset-coloured while the mountain, forest and lake keep their shapes."
     },
     {
       "id": "S09",
       "category": "edit",
-      "image": "part3/images/photo_dark.jpg",
-      "request": "Enhance this photo: make it brighter and clearer.",
+      "image": "part3/images/photo_dark_cup.jpg",
+      "request": "Brighten this photo so the cup and the table are clearly visible.",
       "expected_route": "edit",
-      "rubric": "PASS if output is visibly brighter/clearer without new content."
+      "rubric": "PASS if the output is clearly brighter, the cup and table edge are easy to see, and no new objects are added."
     },
     {
       "id": "S10",
       "category": "domain_style",
       "image": "part3/images/photo_person_self.jpg",
-      "request": "Draw me in Naruto anime style.",
+      "request": "Draw me as a Naruto anime character.",
       "expected_route": "domain_style",
-      "rubric": "PASS if output has the Part 2 Naruto style and keeps pose/clothing colours."
+      "rubric": "PASS if the output has the Naruto look from our Part 2 LoRA and keeps the pose and clothing colours of the photo."
     },
     {
       "id": "S11",
       "category": "domain_style",
-      "image": "part3/images/photo_street.jpg",
-      "request": "Turn this street into a Naruto village scene.",
+      "image": "part3/images/photo_canal_street.jpg",
+      "request": "Redraw this canal neighbourhood as a village from Naruto.",
       "expected_route": "domain_style",
-      "rubric": "PASS if Naruto anime style is clear and the street layout is kept."
+      "rubric": "PASS if the output is clearly in the Naruto anime style and the canal/bridge layout is still visible."
     },
     {
       "id": "S12",
       "category": "domain_style",
-      "image": "part3/images/photo_dog.jpg",
-      "request": "Make this dog a ninja in Naruto anime style.",
+      "image": "part3/images/photo_cafe_table.jpg",
+      "request": "Make this coffee and menu look like a still from the Naruto anime.",
       "expected_route": "domain_style",
-      "rubric": "PASS if Naruto-style ninja dog is produced."
+      "rubric": "PASS if the output has the Naruto anime look and the cup on the saucer is still recognisable."
     },
     {
       "id": "S13",
       "category": "ambiguous_broken",
-      "image": "part3/images/photo_street.jpg",
-      "request": "do it",
+      "image": "part3/images/photo_stop_sign.jpg",
+      "request": "fix it",
       "expected_route": "clarify_or_error",
-      "rubric": "PASS if the system asks for clarification and does not crash."
+      "rubric": "PASS if the system asks what should be changed instead of guessing, and nothing crashes."
     },
     {
       "id": "S14",
       "category": "ambiguous_broken",
       "image": "part3/images/synthetic_truncated.png",
-      "request": "Describe this image.",
+      "request": "Caption this image for me.",
       "expected_route": "clarify_or_error",
-      "rubric": "PASS if a clear 'cannot read image' message is shown, no crash."
+      "rubric": "PASS if the user gets a clear message that the file is damaged/unreadable, and nothing crashes."
     },
     {
       "id": "S15",
       "category": "ambiguous_broken",
       "image": "part3/images/synthetic_blank.png",
-      "request": "Turn this into a watercolour painting.",
+      "request": "Turn this into a pencil sketch.",
       "expected_route": "clarify_or_error",
-      "rubric": "PASS if the blank image is rejected with a clear message."
+      "rubric": "PASS if the blank white image is rejected with a message explaining why, and no image is generated."
     }
   ]
 }

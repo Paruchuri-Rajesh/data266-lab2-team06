@@ -13,7 +13,12 @@ results, grids and figures, then reviewed and edited by the team.
 Part 1: the 25-question golden set (`part1/golden_set.csv`) was drafted with Claude Code from the three PDFs at the team's
 request; every gold value was checked against the PDF text or the rendered chart, and it was committed before any tuning.
 
-Not AI-generated: the scenarios and red-team cases (Part 3), all human evaluations (ratings), and the report text.
+Part 3: the 15 scenarios (`part3/scenarios.json`) and 10 red-team cases (`part3/redteam.json`) were drafted with
+Claude Code at the team's request, after looking at our image set, and were reviewed by the team and committed before
+the evaluation run. The six scene photos were chosen by Claude Code from CC0 images on Wikimedia Commons (sources in
+`part3/images/LICENSES.md`); the team member photo is our own.
+
+Not AI-generated: all human evaluations (ratings and judgements) and the report text.
 
 # Hosted models / APIs used (none are paid APIs; all open weights run on one T4)
 - Part 1: Qwen/Qwen2.5-VL-7B-Instruct (4-bit nf4), BAAI/bge-small-en-v1.5, BAAI/bge-reranker-base (bonus)
