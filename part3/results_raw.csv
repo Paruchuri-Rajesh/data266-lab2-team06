@@ -1,0 +1,67 @@
+scenario_id,category,use_critique,request_id,expected_route,route,route_ok,output_ok,crashed,revisions,critic_decision,clip_score,message,prompt,seconds,output_png
+S01,caption_question,False,8df85ab4,caption_question,caption_question,True,True,False,0,,,"Caption: A serene canal scene with boats and a bridge over a river.
+Q: What is in this picture? Give me a short caption.
+A: The main subject of the image is a serene canal scene with boats and a bridge over a river.
+Q: What is the main subject of the image?
+A: The main subject of the image is a serene canal scene with boats and a bridge over a river.
+Q: What is the setting and visual style of the image?
+A: The setting is an urban area with buildings along the river, and the visual style is realistic.",,7.609,
+S02,caption_question,False,10e04252,caption_question,caption_question,True,True,False,0,,,"Caption: A cup of coffee with a heart shape drawn in the milk foam.
+Q: How many cups of coffee are on the table, and what is drawn in the milk foam?
+A: There is one cup of coffee on the table.
+Q: What is the main subject of the image?
+A: The main subject of the image is a cup of coffee with a heart shape drawn in the milk foam.
+Q: What is the setting and visual style of the image?
+A: ",,9.396,
+S03,caption_question,False,45070702,caption_question,caption_question,True,True,False,0,,,"Caption: stop sign with all-way sign below it
+Q: Read out the words printed on the signs.
+A: STOP
+Q: What is the main subject of the image?
+A: ALL-WAY
+Q: What is the setting and visual style of the image?
+A: stop sign with all-way sign below it",,6.444,
+S04,style_change,False,b3dda4f4,style_change,style_change,True,True,False,0,skipped (no critique loop),,Done (style_change). Critique: skipped (no critique loop) after 0 revision(s).,"A serene lake with a mountain in the background, surrounded by dense forest and rocks along the shore, painted in the style of an oil painting with thick brush strokes., high quality, detailed",16.064,part3/outputs/b3dda4f4.png
+S05,style_change,False,d96211cb,style_change,style_change,True,True,False,0,skipped (no critique loop),,Done (style_change). Critique: skipped (no critique loop) after 0 revision(s).,"A black-and-white charcoal drawing of a dog sitting on grass near a lake with trees in the background., high quality, detailed",15.663,part3/outputs/d96211cb.png
+S06,style_change,False,45514e28,style_change,style_change,True,True,False,0,skipped (no critique loop),,Done (style_change). Critique: skipped (no critique loop) after 0 revision(s).,"A serene canal scene with a boat docked at a pier, a bridge spanning the water in the background, lush green trees lining the banks, and a quaint building nearby, all rendered in the style of a watercolor painting., high quality, detailed",17.587,part3/outputs/45514e28.png
+S07,edit,False,76a98eb8,edit,edit,True,True,False,0,skipped (no critique loop),,Done (edit). Critique: skipped (no critique loop) after 0 revision(s).,A dog wearing a yellow raincoat sitting on grass near a lake with trees in the background.,20.187,part3/outputs/76a98eb8.png
+S08,edit,False,c1c1e56d,edit,edit,True,True,False,0,skipped (no critique loop),,Done (edit). Critique: skipped (no critique loop) after 0 revision(s).,"A serene lake with a mountain in the background, surrounded by dense forest and rocks along the shore. Change the sky to a bright orange sunset.",21.511,part3/outputs/c1c1e56d.png
+S09,edit,False,1703607b,edit,edit,True,True,False,0,skipped (no critique loop),,Done (edit). Critique: skipped (no critique loop) after 0 revision(s).,"Brighten the entire image so the small, round object on the dark surface is clearly visible.",15.391,part3/outputs/1703607b.png
+S10,domain_style,False,b926ac24,domain_style,domain_style,True,True,False,0,skipped (no critique loop),,Done (domain_style). Critique: skipped (no critique loop) after 0 revision(s).,"A person taking a mirror selfie in an indoor setting with modern architecture, re-drawn in Naruto anime style, high quality, detailed",16.625,part3/outputs/b926ac24.png
+S11,domain_style,False,31dbc037,domain_style,domain_style,True,True,False,0,skipped (no critique loop),,Done (domain_style). Critique: skipped (no critique loop) after 0 revision(s).,"Redraw the canal neighbourhood as a village from Naruto, featuring a boat docked on a canal with a bridge in the background, surrounded by buildings, trees, and vibrant colors typical of Naruto's anime style., high quality, detailed",17.908,part3/outputs/31dbc037.png
+S12,domain_style,False,9e85ff0e,domain_style,domain_style,True,True,False,0,skipped (no critique loop),,Done (domain_style). Critique: skipped (no critique loop) after 0 revision(s).,"Redraw the entire image in the style of Naruto anime, maintaining the composition and subjects., high quality, detailed",16.891,part3/outputs/9e85ff0e.png
+S13,ambiguous_broken,False,a9023e4b,clarify_or_error,clarify,True,True,False,0,,,"Your request is ambiguous. Please say what you want, e.g. 'describe this image', 'turn it into a watercolour painting', or 'add a red hat to the person'.",,0.009,
+S14,ambiguous_broken,False,ddb679fc,clarify_or_error,error,True,True,False,0,,,The file could not be read as an image (OSError). Please upload a valid PNG/JPEG.,,0.001,
+S15,ambiguous_broken,False,f4279231,clarify_or_error,error,True,True,False,0,,,The image looks blank (a single flat colour). Please upload an image with content.,,0.004,
+S01,caption_question,True,9a89c711,caption_question,caption_question,True,True,False,0,,,"Caption: A serene canal scene with boats and a bridge over a river.
+Q: What is in this picture? Give me a short caption.
+A: The main subject of the image is a serene canal scene with boats and a bridge over a river.
+Q: What is the main subject of the image?
+A: The main subject of the image is a serene canal scene with boats and a bridge over a river.
+Q: What is the setting and visual style of the image?
+A: The setting is an urban area with buildings along the river, and the visual style is realistic.",,8.278,
+S02,caption_question,True,e84d40f4,caption_question,caption_question,True,True,False,0,,,"Caption: A cup of coffee with a heart shape drawn in the milk foam.
+Q: How many cups of coffee are on the table, and what is drawn in the milk foam?
+A: There is one cup of coffee on the table.
+Q: What is the main subject of the image?
+A: The main subject of the image is a cup of coffee with a heart shape drawn in the milk foam.
+Q: What is the setting and visual style of the image?
+A: ",,9.742,
+S03,caption_question,True,1064d94b,caption_question,caption_question,True,True,False,0,,,"Caption: stop sign with all-way sign below it
+Q: Read out the words printed on the signs.
+A: STOP
+Q: What is the main subject of the image?
+A: ALL-WAY
+Q: What is the setting and visual style of the image?
+A: stop sign with all-way sign below it",,6.719,
+S04,style_change,True,d21789c5,style_change,style_change,True,True,False,2,accept,0.313,Done (style_change). Critique: accept after 2 revision(s).,"A serene lake surrounded by mountains and trees, painted in the style of an oil painting with thick brush strokes., high quality, detailed",38.701,part3/outputs/d21789c5.png
+S05,style_change,True,29f47769,style_change,style_change,True,True,False,2,revise,0.2549,Done (style_change). Critique: revise after 2 revision(s).,"A black-and-white charcoal drawing of a dog sitting on grass near a lake with trees in the background., high quality, detailed",37.35,part3/outputs/29f47769.png
+S06,style_change,True,5e1aa62f,style_change,style_change,True,True,False,0,accept,0.2942,Done (style_change). Critique: accept after 0 revision(s).,"A serene canal scene with a boat docked at a pier, a bridge spanning the water in the background, lush green trees lining the banks, and a quaint building nearby, all rendered in the style of a watercolor painting., high quality, detailed",19.334,part3/outputs/5e1aa62f.png
+S07,edit,True,6b517854,edit,edit,True,True,False,2,accept,0.3701,Done (edit). Critique: accept after 2 revision(s).,Give the dog a bright yellow raincoat.,41.647,part3/outputs/6b517854.png
+S08,edit,True,1ee9586a,edit,edit,True,True,False,1,accept,0.3254,Done (edit). Critique: accept after 1 revision(s).,"Transform the sky into a vibrant, glowing orange sunset, casting a warm glow over the serene lake and mountain backdrop.",32.639,part3/outputs/1ee9586a.png
+S09,edit,True,d9ff4be3,edit,edit,True,True,False,2,revise,0.2678,Done (edit). Critique: revise after 2 revision(s).,"Brighten the entire image so the small, round object on the dark surface is clearly visible.",41.403,part3/outputs/d9ff4be3.png
+S10,domain_style,True,3bc355a9,domain_style,domain_style,True,True,False,2,revise,0.2976,Done (domain_style). Critique: revise after 2 revision(s).,"A person taking a mirror selfie in an indoor setting with modern architecture, re-drawn in Naruto anime style., high quality, detailed",37.543,part3/outputs/3bc355a9.png
+S11,domain_style,True,29477f4e,domain_style,domain_style,True,True,False,2,revise,0.2893,Done (domain_style). Critique: revise after 2 revision(s).,"Redraw the canal neighborhood as a village from Naruto, featuring a boat docked on a canal with a bridge in the background, surrounded by buildings, trees, and a vibrant atmosphere typical of the series., high quality, detailed",42.311,part3/outputs/29477f4e.png
+S12,domain_style,True,63b2c3e6,domain_style,domain_style,True,True,False,0,accept,0.259,Done (domain_style). Critique: accept after 0 revision(s).,"Redraw the entire image in the style of Naruto anime, maintaining the composition and subjects., high quality, detailed",18.012,part3/outputs/63b2c3e6.png
+S13,ambiguous_broken,True,b73150d5,clarify_or_error,clarify,True,True,False,0,,,"Your request is ambiguous. Please say what you want, e.g. 'describe this image', 'turn it into a watercolour painting', or 'add a red hat to the person'.",,0.009,
+S14,ambiguous_broken,True,dc5861cd,clarify_or_error,error,True,True,False,0,,,The file could not be read as an image (OSError). Please upload a valid PNG/JPEG.,,0.0,
+S15,ambiguous_broken,True,880329c5,clarify_or_error,error,True,True,False,0,,,The image looks blank (a single flat colour). Please upload an image with content.,,0.004,

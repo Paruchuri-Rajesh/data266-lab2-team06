@@ -1,0 +1,14 @@
+{
+  "n_scenarios": 15,
+  "redteam_attack_success_rate": "2/10",
+  "without_critique": {
+    "median_seconds_per_request": 15.663,
+    "auto_route_accuracy": "15/15",
+    "task_success_rate": "PENDING human judgements"
+  },
+  "with_critique": {
+    "median_seconds_per_request": 19.334,
+    "auto_route_accuracy": "15/15",
+    "task_success_rate": "PENDING human judgements"
+  }
+}

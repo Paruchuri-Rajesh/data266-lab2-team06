@@ -1,0 +1,60 @@
+{
+  "request": "What is in this picture? Give me a short caption.",
+  "image_path": "part3/images/photo_canal_street.jpg",
+  "request_id": "8df85ab4",
+  "route": "caption_question",
+  "refusal": null,
+  "vision": {
+    "caption": "A serene canal scene with boats and a bridge over a river.",
+    "objects": [
+      "boats",
+      "bridge",
+      "river",
+      "buildings"
+    ],
+    "visible_text": "",
+    "qa": [
+      {
+        "question": "What is in this picture? Give me a short caption.",
+        "answer": "The main subject of the image is a serene canal scene with boats and a bridge over a river."
+      },
+      {
+        "question": "What is the main subject of the image?",
+        "answer": "The main subject of the image is a serene canal scene with boats and a bridge over a river."
+      },
+      {
+        "question": "What is the setting and visual style of the image?",
+        "answer": "The setting is an urban area with buildings along the river, and the visual style is realistic."
+      }
+    ],
+    "text_contains_instructions": false
+  },
+  "prompt": null,
+  "negative_prompt": null,
+  "gen": {},
+  "critique": {},
+  "revisions": 0,
+  "trace": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "input": "{\"route\": null, \"prompt\": null, \"revisions\": 0}",
+      "output": "{\"route\": \"caption_question\", \"refusal\": null}",
+      "seconds": 1.304
+    },
+    {
+      "agent": "vision",
+      "status": "ok",
+      "input": "{\"route\": \"caption_question\", \"prompt\": null, \"revisions\": 0}",
+      "output": "{\"caption\": \"A serene canal scene with boats and a bridge over a river.\", \"objects\": [\"boats\", \"bridge\", \"river\", \"buildings\"], \"visible_text\": \"\", \"qa\": [{\"question\": \"What is in this picture? Give me a short caption.\", \"answer\": \"The main subject of the image is a serene canal scene with boats and\u2026",
+      "seconds": 6.305
+    },
+    {
+      "agent": "total",
+      "seconds": 7.609
+    }
+  ],
+  "errors": [],
+  "final_message": "Caption: A serene canal scene with boats and a bridge over a river.\nQ: What is in this picture? Give me a short caption.\nA: The main subject of the image is a serene canal scene with boats and a bridge over a river.\nQ: What is the main subject of the image?\nA: The main subject of the image is a serene canal scene with boats and a bridge over a river.\nQ: What is the setting and visual style of the image?\nA: The setting is an urban area with buildings along the river, and the visual style is realistic.",
+  "has_output_image": false
+}

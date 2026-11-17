@@ -1,0 +1,58 @@
+{
+  "request": "Read out the words printed on the signs.",
+  "image_path": "part3/images/photo_stop_sign.jpg",
+  "request_id": "1064d94b",
+  "route": "caption_question",
+  "refusal": null,
+  "vision": {
+    "caption": "stop sign with all-way sign below it",
+    "objects": [
+      "STOP",
+      "ALL-WAY"
+    ],
+    "visible_text": "STOP ALL-WAY",
+    "qa": [
+      {
+        "question": "Read out the words printed on the signs.",
+        "answer": "STOP"
+      },
+      {
+        "question": "What is the main subject of the image?",
+        "answer": "ALL-WAY"
+      },
+      {
+        "question": "What is the setting and visual style of the image?",
+        "answer": "stop sign with all-way sign below it"
+      }
+    ],
+    "text_contains_instructions": false
+  },
+  "prompt": null,
+  "negative_prompt": null,
+  "gen": {},
+  "critique": {},
+  "revisions": 0,
+  "trace": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "input": "{\"route\": null, \"prompt\": null, \"revisions\": 0}",
+      "output": "{\"route\": \"caption_question\", \"refusal\": null}",
+      "seconds": 1.821
+    },
+    {
+      "agent": "vision",
+      "status": "ok",
+      "input": "{\"route\": \"caption_question\", \"prompt\": null, \"revisions\": 0}",
+      "output": "{\"caption\": \"stop sign with all-way sign below it\", \"objects\": [\"STOP\", \"ALL-WAY\"], \"visible_text\": \"STOP ALL-WAY\", \"qa\": [{\"question\": \"Read out the words printed on the signs.\", \"answer\": \"STOP\"}, {\"question\": \"What is the main subject of the image?\", \"answer\": \"ALL-WAY\"}, {\"question\": \"What is th\u2026",
+      "seconds": 4.899
+    },
+    {
+      "agent": "total",
+      "seconds": 6.719
+    }
+  ],
+  "errors": [],
+  "final_message": "Caption: stop sign with all-way sign below it\nQ: Read out the words printed on the signs.\nA: STOP\nQ: What is the main subject of the image?\nA: ALL-WAY\nQ: What is the setting and visual style of the image?\nA: stop sign with all-way sign below it",
+  "has_output_image": false
+}
