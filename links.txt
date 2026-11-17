@@ -1,12 +1,10 @@
-GitHub repository: https://github.com/Paruchuri-Rajesh/data266-lab2-team06
+GitHub repo: https://github.com/Paruchuri-Rajesh/data266-lab2-team06
 p1-v1.0 commit: 4dd5fc7
 p2-v1.0 commit: f54a892
 p3-v1.0 commit: d11880a
-HF Part 2 model (run 1): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r4
-HF Part 2 model (run 2): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r32
-HF Part 2 image dataset: https://huggingface.co/datasets/Rajesh-Paruchuri/data266-p2-generations
-Final Kaggle notebook: https://www.kaggle.com/code/rajeshparuchuri/data266-lab2-part1-team06
-Siva's independent implementation (source of sivasurya_chandran/): https://github.com/sivasuryachandran/DATA266_LAB2
-  its p1-v1.0 commit: 2698425
-  its p2-v1.0 commit: 74dde8d
-  its p3-v1.0 commit: 74dde8d
+Hugging Face model (run 1, LoRA r=4): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r4
+Hugging Face model (run 2, LoRA r=32): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r32
+Hugging Face image dataset: https://huggingface.co/datasets/Rajesh-Paruchuri/data266-p2-generations
+Final Kaggle notebook: https://www.kaggle.com/code/sivasuryachandran/data266-team06-p1-final
+Part 3 input images dataset: https://github.com/Paruchuri-Rajesh/data266-lab2-team06/tree/main/part3/images
+Recordings link: none provided
