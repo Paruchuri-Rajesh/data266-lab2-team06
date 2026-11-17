@@ -23,7 +23,7 @@ checklists of facts to cover), the architecture diagrams and the results tables 
 notebooks' output files) were produced with Claude Code. The report prose is written by the team.
 
 Part 1 leaderboard: the team's selected leaderboard submission (`submission_gh_v7.csv`) came from a separate pipeline by a
-team member - <DECLARE any AI assistant used for it>.
+team member - Claude Code (Claude Sonnet 5.5) was used to write, run and debug that pipeline and the second implementation under `sivasurya_chandran/`; the details are in `sivasurya_chandran/AI_USAGE.md`.
 
 Not AI-generated: all human evaluations (ratings and judgements) and the report text.
 
