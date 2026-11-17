@@ -10,6 +10,7 @@ bitsandbytes==0.50.2
 qwen-vl-utils==0.0.8
 json_repair==0.30.3
 gradio==4.44.1
+pydantic==2.10.6   # gradio 4.44.1 fails to launch with pydantic >= 2.11 (verified on a Kaggle kernel)
 # ---- Part 2 (notebooks/p2_finetune.ipynb) - separate runtime, older transformers for diffusers 0.31 ----
 # diffusers==0.31.0  transformers>=4.44,<4.47  peft>=0.13,<0.14  datasets>=2.21,<3.2
 # torchmetrics[image]==1.4.2  lpips==0.1.4  imagehash==4.3.1
