@@ -17,8 +17,6 @@ A third, outside rater also scored the Part 2 blinded comparison (`part2/ratings
 
 ## Code links
 
-Recordings folder: https://drive.google.com/drive/folders/1euWx7fMLZlHuzdXfgy8KJZxX_kdIOhW-
-
 | What | Link |
 |---|---|
 | Team repo (main implementation, Rajesh) | https://github.com/Paruchuri-Rajesh/data266-lab2-team06 - tags `p1-v1.0` (4dd5fc7), `p2-v1.0` (f54a892), `p3-v1.0` (d11880a) |
@@ -28,7 +26,7 @@ Recordings folder: https://drive.google.com/drive/folders/1euWx7fMLZlHuzdXfgy8KJ
 ## Team meetings
 
 Team discussions (knowledge transfer, architecture and trade-offs) were held on SJSU Zoom. The links below are the Zoom
-meeting links we used.
+meeting links we used. Recordings folder (Google Drive): https://drive.google.com/drive/folders/1euWx7fMLZlHuzdXfgy8KJZxX_kdIOhW-
 
 | Meeting | Zoom meeting link |
 |---|---|
