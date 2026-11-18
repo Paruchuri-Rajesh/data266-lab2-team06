@@ -5,6 +5,15 @@ p3-v1.0 commit: d11880a
 Hugging Face model (run 1, LoRA r=4): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r4
 Hugging Face model (run 2, LoRA r=32): https://huggingface.co/Rajesh-Paruchuri/data266-naruto-lora-r32
 Hugging Face image dataset: https://huggingface.co/datasets/Rajesh-Paruchuri/data266-p2-generations
+Second implementation (Siva Surya Chandran, report Appendix A): https://github.com/sivasuryachandran/DATA266_LAB2
+  p1-v1.0 commit: 2698425  https://github.com/sivasuryachandran/DATA266_LAB2/tree/p1-v1.0
+  p2-v1.0 commit: 74dde8d  https://github.com/sivasuryachandran/DATA266_LAB2/tree/p2-v1.0
+  p3-v1.0 commit: 74dde8d  https://github.com/sivasuryachandran/DATA266_LAB2/tree/p3-v1.0
+Pull request adding Siva's work to the team repo: https://github.com/Paruchuri-Rajesh/data266-lab2-team06/pull/1
 Final Kaggle notebook: https://www.kaggle.com/code/sivasuryachandran/data266-team06-p1-final
 Part 3 input images dataset: https://github.com/Paruchuri-Rajesh/data266-lab2-team06/tree/main/part3/images
 Recordings link: https://drive.google.com/drive/folders/1euWx7fMLZlHuzdXfgy8KJZxX_kdIOhW-
+Team meeting Zoom links (SJSU Zoom):
+  Meeting 1: https://sjsu.zoom.us/j/89910572692?pwd=3LMjaV70mf6GcqgFBnV4oHHQNzB2Oa.1
+  Meeting 2: https://sjsu.zoom.us/j/81885574080?pwd=1ZpaNtuOSPAxompNUIVNaE6buV6SgM.1
+  Meeting 3: https://sjsu.zoom.us/j/88046496026?pwd=UWO0b4x4MdiziUpWCdUbGi05U8xH74.1
