@@ -23,13 +23,13 @@ A third, outside rater also scored the Part 2 blinded comparison (`part2/ratings
 | Second implementation (Siva, report Appendix A) | https://github.com/sivasuryachandran/DATA266_LAB2 - tags `p1-v1.0` (2698425), `p2-v1.0` (74dde8d), `p3-v1.0` (74dde8d) |
 | Pull request adding Siva's work to the team repo | https://github.com/Paruchuri-Rajesh/data266-lab2-team06/pull/1 |
 
-## Meeting recordings
+## Team meetings
 
-Recordings of knowledge-transfer sessions and architecture / trade-off discussions (required by the team rules).
+Team discussions (knowledge transfer, architecture and trade-offs) were held on SJSU Zoom. The links below are the Zoom
+meeting links we used.
 
-| Date | Topic | Link |
-|---|---|---|
-| 2026-11-14 | Lab 2 kickoff; Part 1 architecture (retrieval, answering rules) | no link provided |
-| date not recorded | Part 2 LoRA settings: rank 4 vs rank 32, choosing the final run | no link provided |
-| date not recorded | Part 3 agent flow, safety rules and red-team cases | no link provided |
-| date not recorded | Resolving human-evaluation disagreements; Kaggle submission choice | no link provided |
+| Meeting | Zoom meeting link |
+|---|---|
+| Meeting 1 | https://sjsu.zoom.us/j/89910572692?pwd=3LMjaV70mf6GcqgFBnV4oHHQNzB2Oa.1 |
+| Meeting 2 | https://sjsu.zoom.us/j/81885574080?pwd=1ZpaNtuOSPAxompNUIVNaE6buV6SgM.1 |
+| Meeting 3 | https://sjsu.zoom.us/j/88046496026?pwd=UWO0b4x4MdiziUpWCdUbGi05U8xH74.1 |
