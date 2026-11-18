@@ -7,4 +7,4 @@ Hugging Face model (run 2, LoRA r=32): https://huggingface.co/Rajesh-Paruchuri/d
 Hugging Face image dataset: https://huggingface.co/datasets/Rajesh-Paruchuri/data266-p2-generations
 Final Kaggle notebook: https://www.kaggle.com/code/sivasuryachandran/data266-team06-p1-final
 Part 3 input images dataset: https://github.com/Paruchuri-Rajesh/data266-lab2-team06/tree/main/part3/images
-Recordings link: none provided
+Recordings link: https://drive.google.com/drive/folders/1euWx7fMLZlHuzdXfgy8KJZxX_kdIOhW-
