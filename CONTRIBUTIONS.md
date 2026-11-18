@@ -15,6 +15,14 @@ AI assistance is declared separately in `AI_USAGE.md`.
 
 A third, outside rater also scored the Part 2 blinded comparison (`part2/ratings_raw/`).
 
+## Code links
+
+| What | Link |
+|---|---|
+| Team repo (main implementation, Rajesh) | https://github.com/Paruchuri-Rajesh/data266-lab2-team06 - tags `p1-v1.0` (4dd5fc7), `p2-v1.0` (f54a892), `p3-v1.0` (d11880a) |
+| Second implementation (Siva, report Appendix A) | https://github.com/sivasuryachandran/DATA266_LAB2 - tags `p1-v1.0` (2698425), `p2-v1.0` (74dde8d), `p3-v1.0` (74dde8d) |
+| Pull request adding Siva's work to the team repo | https://github.com/Paruchuri-Rajesh/data266-lab2-team06/pull/1 |
+
 ## Meeting recordings
 
 Recordings of knowledge-transfer sessions and architecture / trade-off discussions (required by the team rules).
