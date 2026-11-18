@@ -9,7 +9,7 @@ photo can never end up in the zip); Part 2 LoRA weights are added from --weights
 """
 import argparse, os, subprocess, sys, zipfile
 
-REPORT = "report/Pair_Programming_Team_06_Report.pdf"
+REPORT = "report/Data266_Lab2_Team06_report.pdf"
 PARTS = {
     "Part1": ["notebooks/p1_rag.ipynb", "notebooks/p1_human_eval.ipynb", "part1/"],
     "Part2": ["notebooks/p2_finetune.ipynb", "part2/"],
@@ -34,7 +34,7 @@ if not os.path.exists(REPORT) and not a.allow_missing_report:
 n = 0
 with zipfile.ZipFile(a.out, "w", zipfile.ZIP_DEFLATED) as z:
     if os.path.exists(REPORT):
-        z.write(REPORT, "Pair_Programming_Team_06_Report.pdf"); n += 1
+        z.write(REPORT, os.path.basename(REPORT)); n += 1
     for f in ("CONTRIBUTIONS.md", "AI_USAGE.md", "links.txt"):
         z.write(f, f); n += 1
     for part, items in PARTS.items():
